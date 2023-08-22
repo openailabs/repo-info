@@ -4,19 +4,19 @@ generator client {
 
 plugin hooksTrpcClient {
     provider = "@zenstackhq/tanstack-query"
-    output = "./node_modules/.zenstack/hooks"
+    output = "../../node_modules/.zenstack/hooks"
     useSuperJson = true
     target = "react"
 }
 
 plugin hooksSwr {
     provider = '@zenstackhq/swr'
-    output = "./node_modules/.zenstack/swr"
+    output = "../../node_modules/.zenstack/swr"
 }
 
 plugin trpc {
     provider = '@zenstackhq/trpc'
-    output = './node_modules/.zenstack/trpc'
+    output = '../../node_modules/.zenstack/trpc'
     generateClientHelpers = 'next'
 }
 

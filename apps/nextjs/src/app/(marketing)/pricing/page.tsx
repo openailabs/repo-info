@@ -13,7 +13,7 @@ import type { RouterOutputs } from "~/trpc/server";
 import { api } from "~/trpc/server";
 import { SubscribeNow } from "./subscribe-now";
 
-export // const runtime = "edge";
+// export const runtime = "edge";
 
 export default async function PricingPage() {
   const plans = await api.stripe.plans.query();

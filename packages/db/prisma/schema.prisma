@@ -11,7 +11,7 @@ datasource db {
 
 generator client {
     provider = "prisma-client-js"
-    previewFeatures = ["extendedWhereUnique"]
+    previewFeatures = ["extendedWhereUnique","fieldReference"]
 }
 
 enum ProjectTier {

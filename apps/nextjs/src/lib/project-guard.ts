@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { db, prisma } from "@acme/db";
+import { prisma } from "@acme/db";
 
 export async function userCanAccess(projectId: string) {
   if (!projectId.startsWith("project_")) {

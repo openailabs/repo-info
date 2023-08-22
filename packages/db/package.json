@@ -17,20 +17,21 @@
   "dependencies": {
     "@planetscale/database": "^1.7.0",
     "@prisma/client": "4.16.2",
-    "@zenstackhq/runtime": "1.0.0-beta.18",
-    "@zenstackhq/swr": "1.0.0-beta.18",
-    "@zenstackhq/tanstack-query": "1.0.0-beta.18",
-    "@zenstackhq/trpc": "1.0.0-beta.18",
+    "@zenstackhq/runtime": "latest",
+    "@zenstackhq/server": "latest",
+    "@zenstackhq/tanstack-query": "latest",
     "kysely": "^0.25.0",
     "kysely-planetscale": "^1.3.0",
     "nanoid": "^4.0.2"
   },
   "devDependencies": {
+    "@zenstackhq/trpc": "latest",
+    "@zenstackhq/swr": "latest",
     "dotenv-cli": "^7.2.1",
     "prisma": "^4.16.2",
     "prisma-kysely": "^1.4.2",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
-    "zenstack": "1.0.0-beta.18"
+    "zenstack": "latest"
   }
 }

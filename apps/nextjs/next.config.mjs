@@ -11,7 +11,12 @@ const config = {
   pageExtensions: ["ts", "tsx", "mdx"],
   experimental: {
     mdxRs: true,
+    appDir: true,
     serverActions: true,
+    serverComponentsExternalPackages: [
+      "@zenstackhq/runtime",
+      "@zenstackhq/server",
+    ],
   },
   // modularizeImports: {
   //   "lucide-react": {
