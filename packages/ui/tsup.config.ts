@@ -80,7 +80,10 @@ export default defineConfig((opts) => {
             pkgJson.typesVersions['*'][file] = ['dist/' + file + '.d.ts'];
           });
 
-        await writeFile('./package.json', JSON.stringify(pkgJson, null, 2));
+        await writeFile(
+          './package.json',
+          JSON.stringify(pkgJson, null, 2) + '\n'
+        );
       },
     },
   ];
