@@ -3,86 +3,86 @@ import { TRPCError } from '@trpc/server';
 import * as z from 'zod';
 import { inviteOrgMemberSchema } from '../../validators';
 import {
-    createTRPCRouter,
-    protectedAdminProcedure,
-    protectedOrgProcedure,
+  createTRPCRouter,
+  protectedAdminProcedure,
+  protectedOrgProcedure,
 } from '../trpc';
 
 export const organizationsRouter = createTRPCRouter({
-    listMembers: protectedOrgProcedure.query(async (opts) => {
-        const { orgId } = opts.ctx.auth;
+  listMembers: protectedOrgProcedure.query(async (opts) => {
+    const { orgId } = opts.ctx.auth;
 
-        const members =
-            await clerkClient.organizations.getOrganizationMembershipList({
-                organizationId: orgId,
-            });
+    const members =
+      await clerkClient.organizations.getOrganizationMembershipList({
+        organizationId: orgId,
+      });
 
-        return members.map((member) => ({
-            id: member.id,
-            email: member.publicUserData?.identifier ?? '',
-            role: member.role,
-            joinedAt: member.createdAt,
-            avatarUrl: member.publicUserData?.imageUrl,
-            name: [
-                member.publicUserData?.firstName,
-                member.publicUserData?.lastName,
-            ].join(' '),
-        }));
+    return members.map((member) => ({
+      id: member.id,
+      email: member.publicUserData?.identifier ?? '',
+      role: member.role,
+      joinedAt: member.createdAt,
+      avatarUrl: member.publicUserData?.imageUrl,
+      name: [
+        member.publicUserData?.firstName,
+        member.publicUserData?.lastName,
+      ].join(' '),
+    }));
+  }),
+
+  deleteMember: protectedAdminProcedure
+    .input(z.object({ userId: z.string() }))
+    .mutation(async (opts) => {
+      const { orgId } = opts.ctx.auth;
+
+      const member =
+        await clerkClient.organizations.deleteOrganizationMembership({
+          organizationId: orgId,
+          userId: opts.input.userId,
+        });
+
+      return { memberName: member.publicUserData?.firstName };
     }),
 
-    deleteMember: protectedAdminProcedure
-        .input(z.object({ userId: z.string() }))
-        .mutation(async (opts) => {
-            const { orgId } = opts.ctx.auth;
+  inviteMember: protectedAdminProcedure
+    .input(inviteOrgMemberSchema)
+    .mutation(async (opts) => {
+      const { orgId } = opts.ctx.auth;
 
-            const member =
-                await clerkClient.organizations.deleteOrganizationMembership({
-                    organizationId: orgId,
-                    userId: opts.input.userId,
-                });
+      const { email } = opts.input;
+      const users = await clerkClient.users.getUserList({
+        emailAddress: [email],
+      });
+      const user = users[0];
 
-            return { memberName: member.publicUserData?.firstName };
-        }),
+      if (users.length === 0 || !user) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'User not found',
+        });
+      }
 
-    inviteMember: protectedAdminProcedure
-        .input(inviteOrgMemberSchema)
-        .mutation(async (opts) => {
-            const { orgId } = opts.ctx.auth;
+      if (users.length > 1) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Multiple users found with that email address',
+        });
+      }
 
-            const { email } = opts.input;
-            const users = await clerkClient.users.getUserList({
-                emailAddress: [email],
-            });
-            const user = users[0];
+      const member =
+        await clerkClient.organizations.createOrganizationMembership({
+          organizationId: orgId,
+          userId: user.id,
+          role: opts.input.role,
+        });
 
-            if (users.length === 0 || !user) {
-                throw new TRPCError({
-                    code: 'NOT_FOUND',
-                    message: 'User not found',
-                });
-            }
-
-            if (users.length > 1) {
-                throw new TRPCError({
-                    code: 'BAD_REQUEST',
-                    message: 'Multiple users found with that email address',
-                });
-            }
-
-            const member =
-                await clerkClient.organizations.createOrganizationMembership({
-                    organizationId: orgId,
-                    userId: user.id,
-                    role: opts.input.role,
-                });
-
-            const { firstName, lastName } = member.publicUserData ?? {};
-            return { name: [firstName, lastName].join(' ') };
-        }),
-
-    deleteOrganization: protectedAdminProcedure.mutation(async (opts) => {
-        const { orgId } = opts.ctx.auth;
-
-        await clerkClient.organizations.deleteOrganization(orgId);
+      const { firstName, lastName } = member.publicUserData ?? {};
+      return { name: [firstName, lastName].join(' ') };
     }),
+
+  deleteOrganization: protectedAdminProcedure.mutation(async (opts) => {
+    const { orgId } = opts.ctx.auth;
+
+    await clerkClient.organizations.deleteOrganization(orgId);
+  }),
 });

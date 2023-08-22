@@ -13,126 +13,105 @@ import { OrganizationMembers } from './_components/organization-members';
 import { OrganizationName } from './_components/organization-name';
 
 export default function WorkspaceSettingsPage(props: {
-    params: { workspaceId: string };
+  params: { workspaceId: string };
 }) {
-    const { workspaceId } = props.params;
-    const isOrg = workspaceId.startsWith('org_');
+  const { workspaceId } = props.params;
+  const isOrg = workspaceId.startsWith('org_');
 
-    if (isOrg)
-        return (
-            <Suspense
-                fallback={
-                    <DashboardShell
-                        title="Organization"
-                        description="Manage your organization"
-                    >
-                        <Tabs defaultValue="general">
-                            <TabsList className="mb-2 w-full justify-start">
-                                <TabsTrigger value="general">
-                                    General
-                                </TabsTrigger>
-                                <TabsTrigger value="members">
-                                    Members
-                                </TabsTrigger>
-                            </TabsList>
-                            <TabsContent value="general" className="space-y-4">
-                                <OrganizationName orgId="org_123" name="" />
-                                <OrganizationImage
-                                    orgId="org_123"
-                                    name=""
-                                    image=""
-                                />
-                            </TabsContent>
-                        </Tabs>
-                    </DashboardShell>
-                }
-            >
-                <OrganizationSettingsPage />
-            </Suspense>
-        );
+  if (isOrg)
+    return (
+      <Suspense
+        fallback={
+          <DashboardShell
+            title="Organization"
+            description="Manage your organization"
+          >
+            <Tabs defaultValue="general">
+              <TabsList className="mb-2 w-full justify-start">
+                <TabsTrigger value="general">General</TabsTrigger>
+                <TabsTrigger value="members">Members</TabsTrigger>
+              </TabsList>
+              <TabsContent value="general" className="space-y-4">
+                <OrganizationName orgId="org_123" name="" />
+                <OrganizationImage orgId="org_123" name="" image="" />
+              </TabsContent>
+            </Tabs>
+          </DashboardShell>
+        }
+      >
+        <OrganizationSettingsPage />
+      </Suspense>
+    );
 
-    return <UserSettingsPage />;
+  return <UserSettingsPage />;
 }
 
 async function OrganizationSettingsPage() {
-    const { orgId } = auth();
-    if (!orgId) notFound();
+  const { orgId } = auth();
+  if (!orgId) notFound();
 
-    const org = await clerkClient.organizations.getOrganization({
-        organizationId: orgId,
-    });
+  const org = await clerkClient.organizations.getOrganization({
+    organizationId: orgId,
+  });
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return (
-        <DashboardShell
-            title="Organization"
-            description="Manage your organization"
-        >
-            {/* TODO: Use URL instead of clientside tabs */}
-            <Tabs defaultValue="general">
-                <TabsList className="mb-2 w-full justify-start">
-                    <TabsTrigger value="general">General</TabsTrigger>
-                    <TabsTrigger value="members">Members</TabsTrigger>
-                </TabsList>
-                <TabsContent value="general" className="space-y-4">
-                    <OrganizationName orgId={org.id} name={org.name} />
-                    <OrganizationImage
-                        orgId={org.id}
-                        name={org.name}
-                        image={org.imageUrl}
-                    />
-                </TabsContent>
-                <TabsContent
-                    value="members"
-                    className="flex flex-col space-y-4"
-                >
-                    <Dialog>
-                        <DialogTrigger asChild>
-                            <Button className="self-end">Invite member</Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                            <InviteMemberForm />
-                        </DialogContent>
-                    </Dialog>
+  return (
+    <DashboardShell title="Organization" description="Manage your organization">
+      {/* TODO: Use URL instead of clientside tabs */}
+      <Tabs defaultValue="general">
+        <TabsList className="mb-2 w-full justify-start">
+          <TabsTrigger value="general">General</TabsTrigger>
+          <TabsTrigger value="members">Members</TabsTrigger>
+        </TabsList>
+        <TabsContent value="general" className="space-y-4">
+          <OrganizationName orgId={org.id} name={org.name} />
+          <OrganizationImage
+            orgId={org.id}
+            name={org.name}
+            image={org.imageUrl}
+          />
+        </TabsContent>
+        <TabsContent value="members" className="flex flex-col space-y-4">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="self-end">Invite member</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <InviteMemberForm />
+            </DialogContent>
+          </Dialog>
 
-                    <Suspense
-                        fallback={
-                            <LoadingCard title="Members" description="" />
-                        }
-                    >
-                        <OrganizationMembers
-                            membersPromise={api.organization.listMembers.query()}
-                        />
-                    </Suspense>
-                </TabsContent>
-            </Tabs>
-        </DashboardShell>
-    );
+          <Suspense fallback={<LoadingCard title="Members" description="" />}>
+            <OrganizationMembers
+              membersPromise={api.organization.listMembers.query()}
+            />
+          </Suspense>
+        </TabsContent>
+      </Tabs>
+    </DashboardShell>
+  );
 }
 
 function UserSettingsPage() {
-    return (
-        <DashboardShell
-            title="Account"
-            description="Manage your account details"
-        >
-            <UserProfile
-                appearance={{
-                    variables: {
-                        borderRadius: 'var(--radius)',
-                        // colorBackground: "var(--background)",
-                    },
-                    elements: {
-                        // Main card element
-                        card: 'shadow-none bg-background text-foreground',
-                        navbar: 'hidden',
-                        navbarMobileMenuButton: 'hidden',
-                        headerTitle: 'hidden',
-                        headerSubtitle: 'hidden',
-                    },
-                }}
-            />
-        </DashboardShell>
-    );
+  return (
+    <DashboardShell title="Account" description="Manage your account details">
+      <UserProfile
+        appearance={{
+          variables: {
+            borderRadius: 'var(--radius)',
+            // colorBackground: "var(--background)",
+          },
+          elements: {
+            // Main card element
+            card: 'shadow-none bg-background text-foreground',
+            navbar: 'hidden',
+            navbarMobileMenuButton: 'hidden',
+            headerTitle: 'hidden',
+            headerSubtitle: 'hidden',
+          },
+        }}
+      />
+    </DashboardShell>
+  );
 }

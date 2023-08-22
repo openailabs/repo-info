@@ -8,17 +8,17 @@ import { useEffect } from 'react';
 // export const runtime = "edge";
 
 export default function SSOCallback(props: {
-    searchParams: HandleOAuthCallbackParams;
+  searchParams: HandleOAuthCallbackParams;
 }) {
-    const { handleRedirectCallback } = useClerk();
+  const { handleRedirectCallback } = useClerk();
 
-    useEffect(() => {
-        void handleRedirectCallback(props.searchParams);
-    }, [props.searchParams, handleRedirectCallback]);
+  useEffect(() => {
+    void handleRedirectCallback(props.searchParams);
+  }, [props.searchParams, handleRedirectCallback]);
 
-    return (
-        <div className="flex items-center justify-center">
-            <Icons.Spinner className="mr-2 h-16 w-16 animate-spin" />
-        </div>
-    );
+  return (
+    <div className="flex items-center justify-center">
+      <Icons.Spinner className="mr-2 h-16 w-16 animate-spin" />
+    </div>
+  );
 }
