@@ -17,7 +17,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { db } from "@acme/db";
+import { prisma } from "@acme/db";
 
 /**
  * 1. CONTEXT
@@ -46,7 +46,7 @@ interface CreateContextOptions {
 export const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     ...opts,
-    db,
+    db: prisma,
   };
 };
 
@@ -176,22 +176,26 @@ const enforceApiKey = t.middleware(async ({ ctx, next }) => {
   }
 
   // Check db for API key
-  const apiKey = await ctx.db
-    .selectFrom("ApiKey")
-    .select(["id", "key", "projectId"])
-    .where("ApiKey.key", "=", ctx.apiKey)
-    .where("revokedAt", "is", null)
-    .executeTakeFirst();
+  const apiKey = await ctx.db.apiKey.findFirst({
+    where: {
+      key: ctx.apiKey,
+      revokedAt: null,
+    },
+    select: {
+      id: true,
+      key: true,
+      projectId: true,
+    },
+  });
 
   if (!apiKey) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
-  void ctx.db
-    .updateTable("ApiKey")
-    .set({ lastUsed: new Date() })
-    .where("id", "=", apiKey.id)
-    .execute();
+  await ctx.db.apiKey.update({
+    where: { id: apiKey.id },
+    data: { lastUsed: new Date() },
+  });
 
   return next({
     ctx: {

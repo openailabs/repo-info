@@ -20,7 +20,7 @@ import { api } from "~/trpc/server";
 import { DashboardShell } from "../_components/dashboard-shell";
 import { CreateProjectForm } from "./_components/create-project-form";
 
-export const runtime = "edge";
+export // const runtime = "edge";
 
 function ProjectTierIndicator(props: { tier: ProjectTier }) {
   return (
