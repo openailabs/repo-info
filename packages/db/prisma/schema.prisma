@@ -83,7 +83,7 @@ model Mark {
     updatedBy String? @map(name: "updated_by")
     owner String
     name String
-    userId String
+    userId String? @map(name: "user_id")
     tags Json?
     note String?
     @@unique([owner, name, userId])
