@@ -1,0 +1,12 @@
+import './base'
+
+model Mark extends Auditable {
+  owner String
+  name String
+  userId String
+  tags Json?
+  note String?
+
+  @@unique([owner, name, userId])
+  @@index([owner, name, userId])
+}
