@@ -1,0 +1,52 @@
+apps/chrome/vite.config.content.ts
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+pnpm-lock.yaml
+
+# build
+build/
+dist/
+
+# next.js
+.next/
+out/
+
+# other
+.turbo
+.docusaurus
+.vscode
+
+# misc
+.DS_Store
+*.pem
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# typescript
+*.tsbuildinfo
+
+# codegen
+generated
+apps/docs/docs/packages/*
+!apps/docs/docs/packages/index.md
+
+# client
+apps/client/public/**/*.js
+apps/light-client/public/**/*.js
+apps/client/public/**/*.svg
+.vercel
+
+# docs
+apps/docs/docs-api/engine
+apps/docs/docs-api/gltf-extensions
+
+# engine
+draco_decoder_gltf.js
+font.json
