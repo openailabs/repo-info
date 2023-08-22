@@ -1,6 +1,6 @@
-import { customAlphabet } from "nanoid";
+import { customAlphabet } from 'nanoid';
 
-export { prisma } from "./lib";
-export { Prisma } from "@prisma/client";
+export { prisma } from './lib';
+export { Prisma } from '@prisma/client';
 
-export const genId = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 16);
+export const genId = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyz', 16);

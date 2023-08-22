@@ -1,13 +1,12 @@
-import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import type { AppRouter } from './src/root';
 
-import type { AppRouter } from "./src/root";
-
-export { createTRPCContext, createInnerTRPCContext } from "./src/trpc";
+export { createTRPCContext, createInnerTRPCContext } from './src/trpc';
 
 // TODO: Maybe just export `createAction` instead of the whole `trpc` object?
-export { t } from "./src/trpc";
+export { t } from './src/trpc';
 
-export type { AppRouter } from "./src/root";
+export type { AppRouter } from './src/root';
 
 /**
  * Inference helpers for input types
