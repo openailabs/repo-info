@@ -3,7 +3,7 @@
 // import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 
 // import { createTRPCContext } from "@acme/api";
-// import { lambdaRouter, stripe } from "@acme/api/src/lambda";
+// import { lambdaRouter, stripe } from "@acme/api/lambda";
 
 // import { env } from "~/env.mjs";
 

@@ -1,7 +1,7 @@
 import { clerkClient } from '@clerk/nextjs';
 import { TRPCError } from '@trpc/server';
 import * as z from 'zod';
-import { inviteOrgMemberSchema } from '../../validators';
+import { inviteOrgMemberSchema } from '../validators';
 import {
   createTRPCRouter,
   protectedAdminProcedure,

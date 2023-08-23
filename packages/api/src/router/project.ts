@@ -7,7 +7,7 @@ import {
   createProjectSchema,
   renameProjectSchema,
   transferToOrgSchema,
-} from '../../validators';
+} from '../validators';
 import {
   createTRPCRouter,
   protectedAdminProcedure,

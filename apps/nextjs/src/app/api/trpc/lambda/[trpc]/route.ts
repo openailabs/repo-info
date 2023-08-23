@@ -1,5 +1,5 @@
 import { createTRPCContext } from '@acme/api';
-import { lambdaRouter } from '@acme/api/src/lambda';
+import { lambdaRouter } from '@acme/api/lambda';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 import type { NextRequest } from 'next/server';
 

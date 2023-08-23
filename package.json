@@ -4,43 +4,29 @@
   "engines": {
     "node": ">=v18.16.1"
   },
-  "packageManager": "pnpm@8.6.6",
+  "packageManager": "pnpm@8.6.12",
   "scripts": {
-    "prepare": "husky install",
-    "branchlint": "branchlint -u -c --prefix \"$(git config --global user.name)\"",
     "build": "turbo build",
     "clean": "git clean -xdf node_modules dist .next",
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",
+    "db:studio": "pnpm -F db studio",
     "dev": "FORCE_COLOR=1 turbo dev --parallel",
     "dev:web": "turbo dev --parallel --filter !@acme/expo --filter !@acme/db",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .prettierignore",
-    "lint": "turbo lint && manypkg check",
-    "lint:fix": "turbo lint:fix && manypkg fix",
-    "type-check": "turbo type-check"
-  },
-  "prettier": {
-    "singleQuote": true
+    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "lint": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg check",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg fix",
+    "typecheck": "turbo typecheck"
   },
   "dependencies": {
-    "@branchlint/cli": "^1.0.4",
-    "@branchlint/default-config": "^1.0.2",
-    "@changesets/changelog-git": "^0.1.14",
-    "@changesets/cli": "^2.26.1",
-    "@commitlint/cli": "^17.5.0",
-    "@commitlint/config-conventional": "^17.4.4",
-    "@ianvs/prettier-plugin-sort-imports": "^4.0.2",
+    "@acme/prettier-config": "^0.1.0",
     "@manypkg/cli": "^0.21.0",
-    "@types/prettier": "^2.7.3",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "editorconfig": "^1.0.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^11.2.6",
-    "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
-    "turbo": "^1.10.7",
+    "@turbo/gen": "^1.10.12",
+    "prettier": "^3.0.2",
+    "turbo": "^1.10.12",
     "typescript": "^5.1.6"
-  }
+  },
+  "prettier": "@acme/prettier-config"
 }

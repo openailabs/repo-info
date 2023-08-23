@@ -1,5 +1,5 @@
 import { createTRPCContext } from '@acme/api';
-import { edgeRouter } from '@acme/api/src/edge';
+import { edgeRouter } from '@acme/api/edge';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 import type { NextRequest } from 'next/server';
 

@@ -1,5 +1,5 @@
 import './src/env.mjs';
-import '@acme/api/src/env.mjs';
+import '@acme/api/env';
 import withMDX from '@next/mdx';
 
 /** @type {import("next").NextConfig} */

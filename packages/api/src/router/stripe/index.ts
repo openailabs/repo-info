@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { purchaseOrgSchema } from '../../../validators';
+import { purchaseOrgSchema } from '../../validators';
 import { env } from '../../env.mjs';
 import {
   createTRPCRouter,
