@@ -1,5 +1,5 @@
 import { customAlphabet } from 'nanoid';
-
+export * from "./prisma/enums";
 export { prisma } from './lib';
 export { Prisma } from '@prisma/client';
 

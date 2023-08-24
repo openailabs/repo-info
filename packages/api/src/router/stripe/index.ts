@@ -1,21 +1,23 @@
+import { currentUser } from '@clerk/nextjs';
 import * as z from 'zod';
-import { purchaseOrgSchema } from '../../validators';
+
 import { env } from '../../env.mjs';
 import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
 } from '../../trpc';
-
-// import { webhookRouter } from "./webhooks";
+import { purchaseOrgSchema } from '../../validators';
+import { stripe } from './shared';
+import { webhookRouter } from './webhooks';
 
 export const stripeRouter = createTRPCRouter({
-  //   webhooks: webhookRouter,
+  webhooks: webhookRouter,
 
   createSession: protectedProcedure
     .input(z.object({ planId: z.string() }))
-    .mutation((_opts) => {
-      // const { userId } = opts.ctx.auth;
+    .mutation(async (opts) => {
+      const { userId } = opts.ctx.auth;
 
       // const customer = await opts.ctx.db
       //   .selectFrom("Customer")
@@ -64,7 +66,7 @@ export const stripeRouter = createTRPCRouter({
       return { success: true as const, url };
     }),
 
-  plans: publicProcedure.query(() => {
+  plans: publicProcedure.query(async () => {
     // const proPrice = await stripe.prices.retrieve(
     //   env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
     // );
@@ -112,24 +114,26 @@ export const stripeRouter = createTRPCRouter({
     ];
   }),
 
-  purchaseOrg: protectedProcedure.input(purchaseOrgSchema).mutation((_opts) => {
-    // const { userId } = opts.ctx.auth;
-    // const { orgName, planId } = opts.input;
+  purchaseOrg: protectedProcedure
+    .input(purchaseOrgSchema)
+    .mutation(async (opts) => {
+      // const { userId } = opts.ctx.auth;
+      // const { orgName, planId } = opts.input;
 
-    // const session = await stripe.checkout.sessions.create({
-    //   mode: "subscription",
-    //   payment_method_types: ["card"],
-    //   client_reference_id: userId,
-    //   subscription_data: {
-    //     metadata: { userId, organizationName: orgName },
-    //   },
-    //   success_url: `${env.NEXTJS_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXTJS_URL,
-    //   line_items: [{ price: planId, quantity: 1 }],
-    // });
+      // const session = await stripe.checkout.sessions.create({
+      //   mode: "subscription",
+      //   payment_method_types: ["card"],
+      //   client_reference_id: userId,
+      //   subscription_data: {
+      //     metadata: { userId, organizationName: orgName },
+      //   },
+      //   success_url: `${env.NEXTJS_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXTJS_URL,
+      //   line_items: [{ price: planId, quantity: 1 }],
+      // });
 
-    // if (!session.url) return { success: false as const };
-    // return { success: true as const, url: session.url };
-    const url = `${env.NEXTJS_URL}/dashboard`;
-    return { success: true as const, url };
-  }),
+      // if (!session.url) return { success: false as const };
+      // return { success: true as const, url: session.url };
+      const url = `${env.NEXTJS_URL}/dashboard`;
+      return { success: true as const, url };
+    }),
 });

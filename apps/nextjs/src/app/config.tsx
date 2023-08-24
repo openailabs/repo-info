@@ -1,42 +1,43 @@
-import * as Icons from '@acme/ui/icons';
-import { Component, CreditCard, Globe } from 'lucide-react';
-import type { Route } from 'next';
+import type { Route } from "next";
+import { Component, CreditCard, Globe } from "lucide-react";
+
+import * as Icons from "@acme/ui/icons";
 
 export const siteConfig = {
-  name: 'Acme Corp',
+  name: "Acme Corp",
   description:
-    'Next.js starter kit that includes everything you need to build a modern web application. Mobile application preconfigured, ready to go.',
-  github: 'https://github.com/juliusmarminge/acme-corp',
-  twitter: 'https://twitter.com/jullerino',
+    "Next.js starter kit that includes everything you need to build a modern web application. Mobile application preconfigured, ready to go.",
+  github: "https://github.com/juliusmarminge/acme-corp",
+  twitter: "https://twitter.com/jullerino",
 };
 
 export const navItems = [
   {
-    href: '/dashboard',
-    title: 'Overview',
+    href: "/dashboard",
+    title: "Overview",
   },
   {
-    href: '/pricing',
-    title: 'Pricing',
+    href: "/pricing",
+    title: "Pricing",
   },
   {
-    href: '/dashboard',
-    title: 'Products',
+    href: "/dashboard",
+    title: "Products",
   },
   {
-    href: '/dashboard',
-    title: 'Settings',
+    href: "/dashboard",
+    title: "Settings",
   },
 ] satisfies { href: Route; title: string }[];
 
 export const marketingFeatures = [
   {
     icon: <Component className="h-10 w-10" />,
-    title: 'UI Package',
+    title: "UI Package",
     body: (
       <>
         A UI package with all the components you need for your next application.
-        Built by the wonderful{' '}
+        Built by the wonderful{" "}
         <a
           href="https://ui.shadcn.com"
           target="_blank"
@@ -51,10 +52,10 @@ export const marketingFeatures = [
   },
   {
     icon: <Icons.ClerkWide className="h-10" />,
-    title: 'Authentication',
+    title: "Authentication",
     body: (
       <>
-        Protect pages and API routes throughout your entire app using{' '}
+        Protect pages and API routes throughout your entire app using{" "}
         <a
           href="https://clerk.com"
           target="_blank"
@@ -69,7 +70,7 @@ export const marketingFeatures = [
   },
   {
     icon: <Icons.Mdx className="h-10" />,
-    title: 'MDX',
+    title: "MDX",
     body: (
       <>
         Preconfigured MDX as Server Components. MDX is the best way to write
@@ -84,7 +85,7 @@ export const marketingFeatures = [
         <Icons.React className="h-10 w-10" />
       </div>
     ),
-    title: 'Next.js 13 & React 18',
+    title: "Next.js 13 & React 18",
     body: (
       <>
         Latest features from Next 13 using the brand new App Router with full
@@ -101,10 +102,10 @@ export const marketingFeatures = [
         <Icons.Prisma className="h-10 w-10" />
       </div>
     ),
-    title: 'Full-stack Typesafety',
+    title: "Full-stack Typesafety",
     body: (
       <>
-        Full-stack Typesafety with{' '}
+        Full-stack Typesafety with{" "}
         <a
           href="https://trpc.io"
           target="_blank"
@@ -113,7 +114,7 @@ export const marketingFeatures = [
         >
           tRPC
         </a>
-        . Typesafe database querying using{' '}
+        . Typesafe database querying using{" "}
         <a
           href="https://kysely.dev"
           target="_blank"
@@ -121,8 +122,8 @@ export const marketingFeatures = [
           className="font-medium underline underline-offset-4"
         >
           Kysely
-        </a>{' '}
-        and{' '}
+        </a>{" "}
+        and{" "}
         <a
           href="https://prisma.io"
           target="_blank"
@@ -137,7 +138,7 @@ export const marketingFeatures = [
   },
   {
     icon: <Globe className="h-10 w-10" />,
-    title: 'Edge Compute',
+    title: "Edge Compute",
     body: (
       <>
         Ready to deploy on Edge functions to ensure a blazingly fast application
@@ -147,10 +148,10 @@ export const marketingFeatures = [
   },
   {
     icon: <CreditCard className="h-10 w-10" />,
-    title: 'Payments',
+    title: "Payments",
     body: (
       <>
-        Accept payments with{' '}
+        Accept payments with{" "}
         <a
           href="https://stripe.com"
           target="_blank"

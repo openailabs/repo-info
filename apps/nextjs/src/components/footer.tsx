@@ -1,11 +1,13 @@
-import { cn } from '@acme/ui';
-import { Button } from '@acme/ui/button';
-import * as Icons from '@acme/ui/icons';
-import { siteConfig } from '~/app/config';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import dynamic from "next/dynamic";
+import Link from "next/link";
 
-const ThemeToggle = dynamic(() => import('~/components/theme-toggle'), {
+import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
+import * as Icons from "@acme/ui/icons";
+
+import { siteConfig } from "~/app/config";
+
+const ThemeToggle = dynamic(() => import("~/components/theme-toggle"), {
   ssr: false,
   loading: () => (
     <Button
@@ -23,7 +25,7 @@ const ThemeToggle = dynamic(() => import('~/components/theme-toggle'), {
 
 export function SiteFooter(props: { className?: string }) {
   return (
-    <footer className={cn('container border-t', props.className)}>
+    <footer className={cn("container border-t", props.className)}>
       <div className="my-4 grid grid-cols-2 md:flex md:items-center">
         <Link
           href="/"
@@ -33,7 +35,7 @@ export function SiteFooter(props: { className?: string }) {
           <p className="text-lg font-medium md:hidden">{siteConfig.name}</p>
         </Link>
         <p className="col-span-full row-start-2 text-center text-sm leading-loose text-muted-foreground md:flex-1 md:text-left">
-          Built by{' '}
+          Built by{" "}
           <a
             href={siteConfig.twitter}
             target="_blank"
@@ -42,7 +44,7 @@ export function SiteFooter(props: { className?: string }) {
           >
             Julius
           </a>
-          . Inspired by{' '}
+          . Inspired by{" "}
           <a
             href="https://tx.shadcn.com"
             target="_blank"
@@ -51,7 +53,7 @@ export function SiteFooter(props: { className?: string }) {
           >
             Taxonomy
           </a>
-          . Components by{' '}
+          . Components by{" "}
           <a
             href="https://twitter.com/shadcn"
             target="_blank"
@@ -60,7 +62,7 @@ export function SiteFooter(props: { className?: string }) {
           >
             Shadcn
           </a>
-          . The source code is available on{' '}
+          . The source code is available on{" "}
           <a
             href={siteConfig.github}
             target="_blank"

@@ -1,4 +1,5 @@
 import * as z from 'zod';
+
 import { env } from './env.mjs';
 
 /**
@@ -27,7 +28,7 @@ export const purchaseOrgSchema = z.object({
           env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID,
           env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
         ].includes(str),
-      'Invalid planId'
+      'Invalid planId',
     ),
 });
 export type PurchaseOrg = z.infer<typeof purchaseOrgSchema>;

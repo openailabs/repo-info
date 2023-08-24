@@ -1,13 +1,14 @@
-import type { AppRouter } from '@acme/api';
 import { loggerLink } from '@trpc/client';
 import { experimental_createTRPCNextAppDirClient } from '@trpc/next/app-dir/client';
-import superjson from 'superjson';
-import { endingLink } from './shared';
+
+import type { AppRouter } from '@acme/api';
+
+import { endingLink, transformer } from './shared';
 
 export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   config() {
     return {
-      transformer: superjson,
+      transformer,
       links: [
         loggerLink({
           enabled: (opts) =>

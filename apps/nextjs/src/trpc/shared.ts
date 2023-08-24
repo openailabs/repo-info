@@ -1,6 +1,9 @@
-import type { AppRouter } from '@acme/api';
-import type { HttpBatchLinkOptions, HTTPHeaders, TRPCLink } from '@trpc/client';
+import type { HTTPBatchLinkOptions, HTTPHeaders, TRPCLink } from '@trpc/client';
 import { httpBatchLink } from '@trpc/client';
+
+import type { AppRouter } from '@acme/api';
+
+export { transformer } from '@acme/api/transformer';
 
 const getBaseUrl = () => {
   if (typeof window !== 'undefined') return '';
@@ -15,16 +18,21 @@ export const endingLink = (opts?: { headers?: HTTPHeaders }) =>
   ((runtime) => {
     const sharedOpts = {
       headers: opts?.headers,
-    } satisfies Partial<HttpBatchLinkOptions>;
+    } satisfies Partial<HTTPBatchLinkOptions>;
 
     const edgeLink = httpBatchLink({
       ...sharedOpts,
       url: `${getBaseUrl()}/api/trpc/edge`,
     })(runtime);
+
     const lambdaLink = httpBatchLink({
       ...sharedOpts,
       url: `${getBaseUrl()}/api/trpc/lambda`,
     })(runtime);
+    // const chromeLink = httpBatchLink({
+    //   ...sharedOpts,
+    //   url: `${getBaseUrl()}/api/trpc/chrome`,
+    // })(runtime);
 
     return (ctx) => {
       const path = ctx.op.path.split('.') as [string, ...string[]];
