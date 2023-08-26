@@ -32,7 +32,6 @@
     ]
   },
   "dependencies": {
-    "@acme/prettier-config": "^0.1.0",
     "@commitlint/cli": "^17.5.0",
     "@commitlint/config-conventional": "^17.4.4",
     "@manypkg/cli": "^0.21.0",
