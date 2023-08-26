@@ -1,9 +1,7 @@
 {
   "name": "@acme/db",
+  "private": true,
   "version": "0.1.0",
-  "exports": {
-    ".": "./index.ts"
-  },
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -11,6 +9,11 @@
     "db:push": "pnpm with-env prisma db push --skip-generate  --accept-data-loss",
     "studio": "pnpm with-env prisma studio --port 5556",
     "zi": "zenstack init",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check \"**/*.{mjs,ts,json}\"",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,json}\"",
+    "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
@@ -21,6 +24,9 @@
     "nanoid": "^4.0.2"
   },
   "devDependencies": {
+    "@acme/eslint-config": "0.2.0",
+    "@acme/prettier-config": "0.1.0",
+    "@acme/tsconfig": "0.1.0",
     "@zenstackhq/swr": "^1.0.0-beta.20",
     "@zenstackhq/trpc": "^1.0.0-beta.20",
     "dotenv-cli": "^7.3.0",
@@ -28,5 +34,16 @@
     "tsx": "^3.12.7",
     "typescript": "^5.2.2",
     "zenstack": "^1.0.0-beta.20"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base",
+      "@acme/eslint-config/react"
+    ]
+  },
+  "prettier": "@acme/prettier-config",
+  "exports": {
+    ".": "./src/index.ts"
   }
 }

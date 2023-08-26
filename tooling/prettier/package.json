@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check \"**/*.{mjs,json}\"",
+    "format:fix": "prettier --write \"**/*.{mjs,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -16,6 +17,5 @@
   "devDependencies": {
     "@acme/tsconfig": "^0.1.0",
     "typescript": "^5.2.2"
-  },
-  "prettier": "@acme/prettier-config"
+  }
 }
