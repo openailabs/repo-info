@@ -7,7 +7,6 @@ export const withCors: MiddlewareFactory = (next: NextMiddleware) => {
     console.log("With cors middleware", request.nextUrl.pathname);
     const res = await next(request, _next);
     if (res) {
-      res.headers.append("Content-Type", "application/json;charset=UTF-8");
       res.headers.append("Access-Control-Allow-Credentials", "true");
       res.headers.append("Access-Control-Allow-Origin", "*"); // replace this your actual origin
       res.headers.append(

@@ -26,21 +26,21 @@ const defaultClerkAuthParams = {
   signInUrl: "/signin",
   publicRoutes: [
     ...config.matcher,
-    // "/",
+    "/",
     "/signin(.*)",
     "/sso-callback(.*)",
     "/terms(.*)",
     "/pricing(.*)",
     "/privacy(.*)",
-    // "/api(.*)",
+    "/api(.*)",
   ],
 };
 
 export default middlewares([
-  withContentEncoding,
-  withHeaders,
+  // withContentEncoding,
+  // withHeaders,
   withCors,
-  withLogging,
+  // withLogging,
+  // withLruRateLimiting(DefaultLruRateLimitingParams),
   withClerkAuth(defaultClerkAuthParams),
-  withLruRateLimiting(DefaultLruRateLimitingParams),
 ]);
