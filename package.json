@@ -37,14 +37,19 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "dependencies": {
     "@acme/prettier-config": "^0.1.0",
-    "@manypkg/cli": "^0.21.0",
     "@commitlint/cli": "^17.5.0",
     "@commitlint/config-conventional": "^17.4.4",
+    "@manypkg/cli": "^0.21.0",
+    "@turbo/gen": "^1.10.13",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "@turbo/gen": "^1.10.13",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
