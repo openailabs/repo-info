@@ -10,18 +10,15 @@
     "clean": "rm -rf .turbo node_modules",
     "db:generate": "pnpm with-env zenstack generate",
     "db:push": "pnpm with-env prisma db push --skip-generate  --accept-data-loss",
-    "dev": "echo 'pnpm with-env prisma studio --port 5556'",
+    "studio": "pnpm with-env prisma studio --port 5556",
     "zi": "zenstack init",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
-    "@planetscale/database": "^1.7.0",
     "@prisma/client": "5.2.0",
     "@zenstackhq/runtime": "^1.0.0-beta.20",
     "@zenstackhq/server": "^1.0.0-beta.20",
     "@zenstackhq/tanstack-query": "^1.0.0-beta.20",
-    "kysely": "^0.25.0",
-    "kysely-planetscale": "^1.3.0",
     "nanoid": "^4.0.2"
   },
   "devDependencies": {
@@ -29,7 +26,6 @@
     "@zenstackhq/trpc": "^1.0.0-beta.20",
     "dotenv-cli": "^7.3.0",
     "prisma": "^5.2.0",
-    "prisma-kysely": "^1.4.2",
     "tsx": "^3.12.7",
     "typescript": "^5.2.2",
     "zenstack": "^1.0.0-beta.20"
