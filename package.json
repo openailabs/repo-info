@@ -21,13 +21,6 @@
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg fix",
     "typecheck": "turbo typecheck"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint --edit $1",
-      "prepare-commit-msg": "exec < /dev/tty && cz --hook || true"
-    }
-  },
   "lint-staged": {
     "*.md": "prettier --write",
     "*.{mjs,js,ts,tsx,json,yaml}": "pnpm format:fix",
