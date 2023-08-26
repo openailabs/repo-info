@@ -6,6 +6,7 @@
   },
   "packageManager": "pnpm@8.6.12",
   "scripts": {
+    "prepare": "husky install",
     "pre-commit": "lint-staged",
     "build": "turbo build",
     "clean": "git clean -xdf node_modules dist .next",
@@ -30,6 +31,11 @@
     "*.md": "prettier --write",
     "*.{mjs,js,ts,tsx,json,yaml}": "pnpm format:fix",
     "*.{mjs,js,ts,tsx}": "pnpm lint:fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@acme/prettier-config": "^0.1.0",
