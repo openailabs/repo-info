@@ -26,6 +26,7 @@
     "@manypkg/cli": "^0.21.0",
     "@turbo/gen": "^1.10.13",
     "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
     "turbo": "^1.10.13",
     "typescript": "^5.2.2"
