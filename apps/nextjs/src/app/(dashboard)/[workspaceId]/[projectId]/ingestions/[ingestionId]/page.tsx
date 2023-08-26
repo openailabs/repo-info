@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 import {
   Table,
   TableBody,
@@ -5,11 +7,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@acme/ui/table';
-import { DashboardShell } from '~/app/(dashboard)/_components/dashboard-shell';
-import { userCanAccess } from '~/lib/project-guard';
-import { api } from '~/trpc/server';
-import { format } from 'date-fns';
+} from "@acme/ui/table";
+
+import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { userCanAccess } from "~/lib/project-guard";
+import { api } from "~/trpc/server";
 
 export default async function IngestionPage(props: {
   params: { workspaceId: string; projectId: string; ingestionId: string };
@@ -40,7 +42,7 @@ export default async function IngestionPage(props: {
           <TableRow>
             <TableCell>{ingestion.id}</TableCell>
             <TableCell>
-              {format(ingestion.createdAt, 'yyyy-MM-dd HH:mm:ss')}
+              {format(ingestion.createdAt, "yyyy-MM-dd HH:mm:ss")}
             </TableCell>
             <TableCell>{ingestion.hash}</TableCell>
             <TableCell>{ingestion.origin}</TableCell>

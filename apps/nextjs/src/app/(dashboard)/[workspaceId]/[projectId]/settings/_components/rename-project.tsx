@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import type { RenameProject } from '@acme/api/validators';
-import { renameProjectSchema } from '@acme/api/validators';
-import { Button } from '@acme/ui/button';
+import * as React from "react";
+
+import type { RenameProject } from "@acme/api/validators";
+import { renameProjectSchema } from "@acme/api/validators";
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardContent,
@@ -10,7 +12,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
+} from "@acme/ui/card";
 import {
   Form,
   FormControl,
@@ -18,12 +20,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@acme/ui/form';
-import { Input } from '@acme/ui/input';
-import { useToast } from '@acme/ui/use-toast';
-import { useZodForm } from '~/lib/zod-form';
-import { api } from '~/trpc/client';
-import * as React from 'react';
+} from "@acme/ui/form";
+import { Input } from "@acme/ui/input";
+import { useToast } from "@acme/ui/use-toast";
+
+import { useZodForm } from "~/lib/zod-form";
+import { api } from "~/trpc/client";
 
 export function RenameProject(props: {
   currentName: string;
@@ -42,7 +44,7 @@ export function RenameProject(props: {
   async function onSubmit(data: RenameProject) {
     await api.project.rename.mutate(data);
     toast({
-      title: 'Project name updated',
+      title: "Project name updated",
       description: "Your project's name has been updated.",
     });
   }

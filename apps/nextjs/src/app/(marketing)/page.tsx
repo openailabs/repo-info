@@ -1,15 +1,17 @@
-import { cn } from '@acme/ui';
-import { buttonVariants } from '@acme/ui/button';
+import { Balancer } from "react-wrap-balancer";
+
+import { cn } from "@acme/ui";
+import { buttonVariants } from "@acme/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import * as Icons from '@acme/ui/icons';
-import { marketingFeatures, siteConfig } from '~/app/config';
-import { Balancer } from 'react-wrap-balancer';
+} from "@acme/ui/card";
+import * as Icons from "@acme/ui/icons";
+
+import { marketingFeatures, siteConfig } from "~/app/config";
 
 // export const runtime = "edge";
 
@@ -31,8 +33,8 @@ export default function Home() {
         <h1
           className="animate-fade-up bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl/[5rem]"
           style={{
-            animationDelay: '0.20s',
-            animationFillMode: 'forwards',
+            animationDelay: "0.20s",
+            animationFillMode: "forwards",
           }}
         >
           <Balancer>Your all-in-one, enterprise ready starting point</Balancer>
@@ -40,8 +42,8 @@ export default function Home() {
         <p
           className="mt-6 animate-fade-up text-center text-muted-foreground/80 opacity-0 md:text-xl"
           style={{
-            animationDelay: '0.30s',
-            animationFillMode: 'forwards',
+            animationDelay: "0.30s",
+            animationFillMode: "forwards",
           }}
         >
           <Balancer>
@@ -53,12 +55,12 @@ export default function Home() {
         <div
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{
-            animationDelay: '0.40s',
-            animationFillMode: 'forwards',
+            animationDelay: "0.40s",
+            animationFillMode: "forwards",
           }}
         >
           <a
-            className={cn(buttonVariants({ variant: 'default' }))}
+            className={cn(buttonVariants({ variant: "default" }))}
             href={siteConfig.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -83,7 +85,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {marketingFeatures.map((feature) => (
-            <Card key={feature.title} className={cn('p-2')}>
+            <Card key={feature.title} className={cn("p-2")}>
               <CardHeader>{feature.icon}</CardHeader>
               <CardContent className="space-y-2">
                 <CardTitle>{feature.title}</CardTitle>

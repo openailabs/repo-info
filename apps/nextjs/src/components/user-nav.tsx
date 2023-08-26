@@ -1,5 +1,16 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@acme/ui/avatar';
-import { Button } from '@acme/ui/button';
+import Link from "next/link";
+import { currentUser } from "@clerk/nextjs";
+import {
+  CreditCard,
+  LogIn,
+  LogOut,
+  PlusCircle,
+  Settings,
+  User,
+} from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
+import { Button } from "@acme/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,17 +20,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '@acme/ui/dropdown-menu';
-import { currentUser } from '@clerk/nextjs';
-import {
-  CreditCard,
-  LogIn,
-  LogOut,
-  PlusCircle,
-  Settings,
-  User,
-} from 'lucide-react';
-import Link from 'next/link';
+} from "@acme/ui/dropdown-menu";
 
 export async function UserNav() {
   const user = await currentUser();
@@ -41,11 +42,11 @@ export async function UserNav() {
 
   const fullname = `${user.firstName} ${user.lastName}`;
   const initials = fullname
-    .split(' ')
+    .split(" ")
     .map((n) => n[0])
-    .join('');
+    .join("");
   const email = user.emailAddresses.find(
-    (e) => e.id === user.primaryEmailAddressId
+    (e) => e.id === user.primaryEmailAddressId,
   )?.emailAddress;
 
   return (
@@ -53,7 +54,7 @@ export async function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user.profileImageUrl} alt={user.username ?? ''} />
+            <AvatarImage src={user.profileImageUrl} alt={user.username ?? ""} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>

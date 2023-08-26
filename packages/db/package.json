@@ -2,8 +2,7 @@
   "name": "@acme/db",
   "version": "0.1.0",
   "exports": {
-    ".": "./index.ts",
-    "./enums": "./enums.ts"
+    ".": "./index.ts"
   },
   "license": "MIT",
   "scripts": {

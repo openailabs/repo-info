@@ -1,6 +1,7 @@
-import { Button } from '@acme/ui/button';
-import { Card, CardDescription, CardHeader, CardTitle } from '@acme/ui/card';
-import { DashboardShell } from '../_components/dashboard-shell';
+import { Button } from "@acme/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@acme/ui/card";
+
+import { DashboardShell } from "../_components/dashboard-shell";
 
 export default function Loading() {
   return (

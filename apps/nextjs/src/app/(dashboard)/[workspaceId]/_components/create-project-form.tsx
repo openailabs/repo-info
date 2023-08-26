@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import type { CreateProject } from '@acme/api/validators';
-import { createProjectSchema } from '@acme/api/validators';
-import { Button } from '@acme/ui/button';
+import { useRouter } from "next/navigation";
+
+import type { CreateProject } from "@acme/api/validators";
+import { createProjectSchema } from "@acme/api/validators";
+import { Button } from "@acme/ui/button";
 import {
   Form,
   FormControl,
@@ -11,12 +13,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@acme/ui/form';
-import { Input } from '@acme/ui/input';
-import { useToast } from '@acme/ui/use-toast';
-import { useZodForm } from '~/lib/zod-form';
-import { api } from '~/trpc/client';
-import { useRouter } from 'next/navigation';
+} from "@acme/ui/form";
+import { Input } from "@acme/ui/input";
+import { useToast } from "@acme/ui/use-toast";
+
+import { useZodForm } from "~/lib/zod-form";
+import { api } from "~/trpc/client";
 
 export const CreateProjectForm = (props: { workspaceId: string }) => {
   const router = useRouter();
@@ -29,15 +31,15 @@ export const CreateProjectForm = (props: { workspaceId: string }) => {
       const projectId = await api.project.create.mutate(data);
       router.push(`/${props.workspaceId}/${projectId}`);
       toaster.toast({
-        title: 'Project created',
+        title: "Project created",
         description: `Project ${data.name} created successfully.`,
       });
     } catch (error) {
       toaster.toast({
-        title: 'Error creating project',
-        variant: 'destructive',
+        title: "Error creating project",
+        variant: "destructive",
         description:
-          'An issue occurred while creating your project. Please try again.',
+          "An issue occurred while creating your project. Please try again.",
       });
     }
   }

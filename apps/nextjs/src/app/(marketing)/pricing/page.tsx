@@ -1,19 +1,25 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 //@typescript-eslint/no-unsafe-assignment
 //@typescript-eslint/no-unsafe-member-access
 //@typescript-eslint/no-unsafe-call
 //@typescript-eslint/no-unsafe-argument
+import type { Key } from "react";
+import { CheckCircle2 } from "lucide-react";
+import { Balancer } from "react-wrap-balancer";
+
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import type { RouterOutputs } from '~/trpc/server';
-import { api } from '~/trpc/server';
-import { CheckCircle2 } from 'lucide-react';
-import { Balancer } from 'react-wrap-balancer';
-import { SubscribeNow } from './subscribe-now';
+} from "@acme/ui/card";
+
+import type { RouterOutputs } from "~/trpc/server";
+import { api } from "~/trpc/server";
+import { SubscribeNow } from "./subscribe-now";
 
 // export const runtime = "edge";
 
@@ -29,7 +35,7 @@ export default async function PricingPage() {
         </Balancer>
 
         <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {plans.map((plan) => (
+          {plans.map((plan: { id: Key | null | undefined }) => (
             <PricingCard key={plan.id} plan={plan} />
           ))}
         </div>
@@ -40,9 +46,9 @@ export default async function PricingPage() {
 
 function CurrencyIcon(props: { currency: string }) {
   switch (props.currency) {
-    case 'usd':
+    case "usd":
       return <span>$</span>;
-    case 'eur':
+    case "eur":
       return <span>€</span>;
     default:
       return <span>{props.currency}</span>;
@@ -50,7 +56,7 @@ function CurrencyIcon(props: { currency: string }) {
 }
 
 function PricingCard(props: {
-  plan: RouterOutputs['stripe']['plans'][number];
+  plan: RouterOutputs["stripe"]["plans"][number];
 }) {
   return (
     <Card>
@@ -60,7 +66,7 @@ function PricingCard(props: {
           <CurrencyIcon currency={props.plan.currency} />
           {props.plan.amount / 100}
           <span className="text-base font-normal"> / month</span>
-        </div>{' '}
+        </div>{" "}
         <CardDescription>{props.plan.description}</CardDescription>
       </CardHeader>
 

@@ -1,6 +1,6 @@
-import { DashboardShell } from '~/app/(dashboard)/_components/dashboard-shell';
-import { api } from '~/trpc/server';
-import { RenameProject } from './_components/rename-project';
+import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { api } from "~/trpc/server";
+import { RenameProject } from "./_components/rename-project";
 
 export default async function ProjectSettingsPage(props: {
   params: { workspaceId: string; projectId: string };

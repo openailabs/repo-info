@@ -1,13 +1,15 @@
-import { buttonVariants } from '@acme/ui/button';
-import * as Icons from '@acme/ui/icons';
-import { auth } from '@clerk/nextjs';
-import { siteConfig } from '~/app/config';
-import { SiteFooter } from '~/components/footer';
-import { MobileDropdown } from '~/components/mobile-nav';
-import Link from 'next/link';
-import { Suspense } from 'react';
-import type { ReactNode } from 'react';
-import { MainNav } from '../(dashboard)/_components/main-nav';
+import { Suspense } from "react";
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { auth } from "@clerk/nextjs";
+
+import { buttonVariants } from "@acme/ui/button";
+import * as Icons from "@acme/ui/icons";
+
+import { siteConfig } from "~/app/config";
+import { SiteFooter } from "~/components/footer";
+import { MobileDropdown } from "~/components/mobile-nav";
+import { MainNav } from "../(dashboard)/_components/main-nav";
 
 export default function MarketingLayout(props: { children: ReactNode }) {
   return (
@@ -39,7 +41,7 @@ function DashboardLink() {
 
   if (!userId) {
     return (
-      <Link href="/signin" className={buttonVariants({ variant: 'outline' })}>
+      <Link href="/signin" className={buttonVariants({ variant: "outline" })}>
         Sign In
         <Icons.ChevronRight className="ml-1 h-4 w-4" />
       </Link>
@@ -49,7 +51,7 @@ function DashboardLink() {
   return (
     <Link
       href={`/${orgId ?? userId}`}
-      className={buttonVariants({ variant: 'outline' })}
+      className={buttonVariants({ variant: "outline" })}
     >
       Dashboard
       <Icons.ChevronRight className="ml-1 h-4 w-4" />

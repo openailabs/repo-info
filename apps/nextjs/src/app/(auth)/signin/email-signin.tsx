@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
-import * as Icons from '@acme/ui/icons';
-import { Input } from '@acme/ui/input';
-import { useToast } from '@acme/ui/use-toast';
-import { useSignIn, useSignUp } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
-import * as React from 'react';
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { useSignIn, useSignUp } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
+import * as Icons from "@acme/ui/icons";
+import { Input } from "@acme/ui/input";
+import { useToast } from "@acme/ui/use-toast";
 
 export function EmailSignIn() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -18,8 +19,8 @@ export function EmailSignIn() {
 
   const signInWithLink = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const email = new FormData(e.currentTarget).get('email');
-    if (!signInLoaded || typeof email !== 'string') return null;
+    const email = new FormData(e.currentTarget).get("email");
+    if (!signInLoaded || typeof email !== "string") return null;
 
     // the catch here prints out the error.
     // if the user doesn't exist we will return a 422 in the network response.
@@ -30,11 +31,11 @@ export function EmailSignIn() {
         identifier: email,
       })
       .catch((error) => {
-        console.log('sign-in error', JSON.stringify(error));
+        console.log("sign-in error", JSON.stringify(error));
       });
 
     const firstFactor = signIn.supportedFirstFactors.find(
-      (f) => f.strategy === 'email_link'
+      (f) => f.strategy === "email_link",
       // This cast shouldn't be necessary but because TypeScript is dumb and can't infer it.
     ) as { emailAddressId: string } | undefined;
 
@@ -43,8 +44,8 @@ export function EmailSignIn() {
 
       setIsLoading(false);
       toast({
-        title: 'Email Sent',
-        description: 'Check your inbox for a verification email.',
+        title: "Email Sent",
+        description: "Check your inbox for a verification email.",
       });
       const response = await magicFlow
         .startMagicLinkFlow({
@@ -53,23 +54,23 @@ export function EmailSignIn() {
         })
         .catch(() => {
           toast({
-            variant: 'destructive',
-            title: 'Error',
-            description: 'Something went wrong, please try again.',
+            variant: "destructive",
+            title: "Error",
+            description: "Something went wrong, please try again.",
           });
         });
 
       const verification = response?.firstFactorVerification;
-      if (verification?.status === 'expired') {
+      if (verification?.status === "expired") {
         toast({
-          variant: 'destructive',
-          title: 'Link Expired',
-          description: 'Link expired, please try again.',
+          variant: "destructive",
+          title: "Link Expired",
+          description: "Link expired, please try again.",
         });
       }
 
       magicFlow.cancelMagicLinkFlow();
-      if (response?.status === 'complete') {
+      if (response?.status === "complete") {
         await setActive({ session: response.createdSessionId });
         router.push(`/dashboard`);
       }
@@ -82,22 +83,22 @@ export function EmailSignIn() {
 
       setIsLoading(false);
       toast({
-        title: 'Email Sent',
-        description: 'Check your inbox for a verification email.',
+        title: "Email Sent",
+        description: "Check your inbox for a verification email.",
       });
       const response = await startMagicLinkFlow({
         redirectUrl: `${window.location.origin}/`,
       })
         .catch(() => {
           toast({
-            variant: 'destructive',
-            title: 'Error',
-            description: 'Something went wrong, please try again.',
+            variant: "destructive",
+            title: "Error",
+            description: "Something went wrong, please try again.",
           });
         })
         .then((res) => res);
 
-      if (response?.status === 'complete') {
+      if (response?.status === "complete") {
         await setActive({ session: response.createdSessionId });
         router.push(`/dashboard`);
         return;

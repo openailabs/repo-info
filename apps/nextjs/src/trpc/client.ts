@@ -1,9 +1,9 @@
-import { loggerLink } from '@trpc/client';
-import { experimental_createTRPCNextAppDirClient } from '@trpc/next/app-dir/client';
+import { loggerLink } from "@trpc/client";
+import { experimental_createTRPCNextAppDirClient } from "@trpc/next/app-dir/client";
 
-import type { AppRouter } from '@acme/api';
+import type { AppRouter } from "@acme/api";
 
-import { endingLink, transformer } from './shared';
+import { endingLink, transformer } from "./shared";
 
 export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   config() {
@@ -12,8 +12,8 @@ export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
       links: [
         loggerLink({
           enabled: (opts) =>
-            process.env.NODE_ENV === 'development' ||
-            (opts.direction === 'down' && opts.result instanceof Error),
+            process.env.NODE_ENV === "development" ||
+            (opts.direction === "down" && opts.result instanceof Error),
         }),
         endingLink(),
       ],
@@ -21,4 +21,4 @@ export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   },
 });
 
-export { type RouterInputs, type RouterOutputs } from '@acme/api';
+export { type RouterInputs, type RouterOutputs } from "@acme/api";

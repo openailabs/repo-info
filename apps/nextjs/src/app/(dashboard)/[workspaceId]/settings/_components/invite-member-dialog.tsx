@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import type { InviteOrgMember } from '@acme/api/validators';
-import { inviteOrgMemberSchema, MEMBERSHIP } from '@acme/api/validators';
-import { Button } from '@acme/ui/button';
+import type { InviteOrgMember } from "@acme/api/validators";
+import { inviteOrgMemberSchema, MEMBERSHIP } from "@acme/api/validators";
+import { Button } from "@acme/ui/button";
 import {
   Form,
   FormControl,
@@ -11,18 +11,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@acme/ui/form';
-import { Input } from '@acme/ui/input';
+} from "@acme/ui/form";
+import { Input } from "@acme/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@acme/ui/select';
-import { useToast } from '@acme/ui/use-toast';
-import { useZodForm } from '~/lib/zod-form';
-import { api } from '~/trpc/client';
+} from "@acme/ui/select";
+import { useToast } from "@acme/ui/use-toast";
+
+import { useZodForm } from "~/lib/zod-form";
+import { api } from "~/trpc/client";
 
 export const InviteMemberForm = () => {
   const toaster = useToast();
@@ -35,13 +36,13 @@ export const InviteMemberForm = () => {
     try {
       const member = await api.organization.inviteMember.mutate(data);
       toaster.toast({
-        title: 'Member invited',
+        title: "Member invited",
         description: `An invitation to ${member.name} has been sent.`,
       });
     } catch (error) {
       toaster.toast({
-        title: 'Invitation failed',
-        variant: 'destructive',
+        title: "Invitation failed",
+        variant: "destructive",
         description: `An issue occured while inviting ${data.email}. Make sure they have an account, and try again.`,
       });
     }
@@ -77,7 +78,7 @@ export const InviteMemberForm = () => {
               <Select
                 onValueChange={(val) =>
                   field.onChange(
-                    val as (typeof MEMBERSHIP)[keyof typeof MEMBERSHIP]
+                    val as (typeof MEMBERSHIP)[keyof typeof MEMBERSHIP],
                   )
                 }
                 defaultValue={field.value}

@@ -1,7 +1,7 @@
-import type { MDXComponents } from 'mdx/types';
-import type { Route } from 'next';
-import Link from 'next/link';
-import * as React from 'react';
+import * as React from "react";
+import type { Route } from "next";
+import Link from "next/link";
+import type { MDXComponents } from "mdx/types";
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -34,8 +34,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />
     ),
     a: ({ children, href }) => {
-      const isExternal = href?.startsWith('http');
-      const Component = isExternal ? 'a' : Link;
+      const isExternal = href?.startsWith("http");
+      const Component = isExternal ? "a" : Link;
       return (
         <Component
           href={href as Route}

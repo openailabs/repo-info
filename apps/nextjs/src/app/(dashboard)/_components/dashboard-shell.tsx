@@ -1,4 +1,4 @@
-import { Balancer } from 'react-wrap-balancer';
+import { Balancer } from "react-wrap-balancer";
 
 export function DashboardShell(props: {
   title: string;

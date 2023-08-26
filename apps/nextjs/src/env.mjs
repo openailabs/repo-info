@@ -1,14 +1,14 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const env = createEnv({
   shared: {
-    NODE_ENV: z.enum(['development', 'test', 'production']),
+    NODE_ENV: z.enum(["development", "test", "production"]),
   },
   server: {
     DATABASE_URL: z.string().url(),
     CLERK_SECRET_KEY: z.string().optional(),
-    STRIPE_WEBHOOK_SECRET: z.string(),
+    // STRIPE_WEBHOOK_SECRET: z.string(),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),

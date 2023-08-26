@@ -4,10 +4,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import { api } from '~/trpc/server';
-import { DashboardShell } from '../../_components/dashboard-shell';
-import { SubscriptionForm } from './subscription-form';
+} from "@acme/ui/card";
+
+import { api } from "~/trpc/server";
+import { DashboardShell } from "../../_components/dashboard-shell";
+import { SubscriptionForm } from "./subscription-form";
 
 export default function BillingPage() {
   return (
@@ -35,7 +36,7 @@ async function SubscriptionCard() {
         {subscription ? (
           <p>
             You are currently on the <strong>{subscription.plan}</strong> plan.
-            Your subscription will renew on{' '}
+            Your subscription will renew on{" "}
             <strong>{subscription.endsAt?.toLocaleDateString()}</strong>.
           </p>
         ) : (

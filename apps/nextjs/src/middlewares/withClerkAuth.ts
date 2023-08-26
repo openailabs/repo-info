@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { clerkClient } from "@clerk/nextjs";
 import { authMiddleware } from "@clerk/nextjs/server";

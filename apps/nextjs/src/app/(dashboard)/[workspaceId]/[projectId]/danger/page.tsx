@@ -1,18 +1,20 @@
-import { Button } from '@acme/ui/button';
+import { Suspense } from "react";
+
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import { DashboardShell } from '~/app/(dashboard)/_components/dashboard-shell';
-import { userCanAccess } from '~/lib/project-guard';
-import { api } from '~/trpc/server';
-import { Suspense } from 'react';
-import { DeleteProject } from './delete-project';
-import { TransferProjectToOrganization } from './transfer-to-organization';
-import { TransferProjectToPersonal } from './transfer-to-personal';
+} from "@acme/ui/card";
+
+import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { userCanAccess } from "~/lib/project-guard";
+import { api } from "~/trpc/server";
+import { DeleteProject } from "./delete-project";
+import { TransferProjectToOrganization } from "./transfer-to-organization";
+import { TransferProjectToPersonal } from "./transfer-to-personal";
 
 export default async function DangerZonePage(props: {
   params: { projectId: string; workspaceId: string };

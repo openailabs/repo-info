@@ -1,18 +1,20 @@
-import { genId } from '@acme/db';
-import { clerkClient } from '@clerk/nextjs';
-import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
+import { clerkClient } from "@clerk/nextjs";
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
+
+import { genId } from "@acme/db";
+
+import {
+  createTRPCRouter,
+  protectedAdminProcedure,
+  protectedProcedure,
+} from "../trpc";
 import {
   createApiKeySchema,
   createProjectSchema,
   renameProjectSchema,
   transferToOrgSchema,
-} from '../validators';
-import {
-  createTRPCRouter,
-  protectedAdminProcedure,
-  protectedProcedure,
-} from '../trpc';
+} from "../validators";
 
 const PROJECT_LIMITS = {
   FREE: 1000,
@@ -47,12 +49,12 @@ export const projectRouter = createTRPCRouter({
       // FIXME: Don't hardcode the limit to PRO
       if (projects >= PROJECT_LIMITS.PRO) {
         throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Limit reached',
+          code: "BAD_REQUEST",
+          message: "Limit reached",
         });
       }
 
-      const projectId = 'project_' + genId();
+      const projectId = "project_" + genId();
 
       // await opts.ctx.db
       //     .insertInto('Project')
@@ -154,15 +156,15 @@ export const projectRouter = createTRPCRouter({
 
       if (!project) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Project not found',
+          code: "NOT_FOUND",
+          message: "Project not found",
         });
       }
 
       if (!project.organizationId) {
         throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Project is already personal',
+          code: "BAD_REQUEST",
+          message: "Project is already personal",
         });
       }
 
@@ -196,7 +198,7 @@ export const projectRouter = createTRPCRouter({
 
       if (!org) {
         throw new TRPCError({
-          code: 'UNAUTHORIZED',
+          code: "UNAUTHORIZED",
           message: "You're not a member of the target organization",
         });
       }
@@ -229,26 +231,26 @@ export const projectRouter = createTRPCRouter({
 
       if (!project) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Project not found',
+          code: "NOT_FOUND",
+          message: "Project not found",
         });
       }
 
       if (project.organizationId === targetOrgId) {
         throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Project is already in the target organization',
+          code: "BAD_REQUEST",
+          message: "Project is already in the target organization",
         });
       }
 
       if (
         project.organizationId &&
         project.organizationId !== userOrgId &&
-        orgRole !== 'admin'
+        orgRole !== "admin"
       ) {
         throw new TRPCError({
-          code: 'UNAUTHORIZED',
-          message: 'You must be an admin to transfer this project',
+          code: "UNAUTHORIZED",
+          message: "You must be an admin to transfer this project",
         });
       }
 
@@ -374,8 +376,8 @@ export const projectRouter = createTRPCRouter({
 
       if (!project) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Project not found',
+          code: "NOT_FOUND",
+          message: "Project not found",
         });
       }
 
@@ -386,7 +388,7 @@ export const projectRouter = createTRPCRouter({
     .input(
       z.object({
         projectId: z.string(),
-      })
+      }),
     )
     .query(async (opts) => {
       const { userId } = opts.ctx.auth;
@@ -445,14 +447,14 @@ export const projectRouter = createTRPCRouter({
         orderBy: [
           {
             // 判断 revokedAt 字段
-            revokedAt: 'asc', // if null means it's active
+            revokedAt: "asc", // if null means it's active
           },
           {
             // 判断 expiresAt 字段
-            expiresAt: currentDate <= 'expiresAt' ? 'asc' : 'desc', // if null or later than today it's active or expired
+            expiresAt: currentDate <= "expiresAt" ? "asc" : "desc", // if null or later than today it's active or expired
           },
           {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
         ],
       });
@@ -485,14 +487,14 @@ export const projectRouter = createTRPCRouter({
 
       if (!project) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Project not found',
+          code: "NOT_FOUND",
+          message: "Project not found",
         });
       }
 
       if (project.userId && project.userId !== userId) {
         throw new TRPCError({
-          code: 'FORBIDDEN',
+          code: "FORBIDDEN",
           message: "You don't have access to this project",
         });
       }
@@ -502,20 +504,20 @@ export const projectRouter = createTRPCRouter({
           userId,
         });
         const isMemberInProjectOrg = orgs.some(
-          (org) => org.organization.id === project.organizationId
+          (org) => org.organization.id === project.organizationId,
         );
 
         if (!isMemberInProjectOrg) {
           throw new TRPCError({
-            code: 'FORBIDDEN',
+            code: "FORBIDDEN",
             message: "You don't have access to this project",
           });
         }
       }
 
       // Generate the key
-      const apiKey = 'sk_live_' + genId();
-      const apiKeyId = 'api_key_' + genId();
+      const apiKey = "sk_live_" + genId();
+      const apiKeyId = "api_key_" + genId();
       // await opts.ctx.db
       //     .insertInto('ApiKey')
       //     .values({
@@ -567,8 +569,8 @@ export const projectRouter = createTRPCRouter({
 
       if (result.count === 0) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'API key not found',
+          code: "NOT_FOUND",
+          message: "API key not found",
         });
       }
 
@@ -596,12 +598,12 @@ export const projectRouter = createTRPCRouter({
 
       if (!apiKey) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'API key not found',
+          code: "NOT_FOUND",
+          message: "API key not found",
         });
       }
 
-      const newKey = 'sk_live_' + genId();
+      const newKey = "sk_live_" + genId();
       // await opts.ctx.db
       //     .updateTable('ApiKey')
       //     .set({ key: newKey })

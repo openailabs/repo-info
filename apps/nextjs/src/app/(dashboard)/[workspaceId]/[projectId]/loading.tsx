@@ -1,8 +1,10 @@
-import { Button } from '@acme/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@acme/ui/tabs';
-import { CalendarDateRangePicker } from '~/app/(dashboard)/_components/date-range-picker';
-import { Download } from 'lucide-react';
-import { DashboardShell } from '../../_components/dashboard-shell';
+import { Download } from "lucide-react";
+
+import { Button } from "@acme/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
+
+import { CalendarDateRangePicker } from "~/app/(dashboard)/_components/date-range-picker";
+import { DashboardShell } from "../../_components/dashboard-shell";
 
 export default function Loading() {
   return (

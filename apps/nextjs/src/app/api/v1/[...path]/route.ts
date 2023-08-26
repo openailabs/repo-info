@@ -1,8 +1,9 @@
-import { prisma } from '@acme/db';
-import { getAuth } from '@clerk/nextjs/server';
-import { enhance } from '@zenstackhq/runtime';
-import { NextRequestHandler } from '@zenstackhq/server/next';
-import type { NextRequest } from 'next/server';
+import type { NextRequest } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import { enhance } from "@zenstackhq/runtime";
+import { NextRequestHandler } from "@zenstackhq/server/next";
+
+import { prisma } from "@acme/db";
 
 function getPrisma(req: NextRequest) {
   const auth = getAuth(req);

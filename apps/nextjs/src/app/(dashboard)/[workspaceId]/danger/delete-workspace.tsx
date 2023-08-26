@@ -1,13 +1,16 @@
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
+import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
+} from "@acme/ui/card";
 import {
   Dialog,
   DialogClose,
@@ -17,20 +20,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@acme/ui/dialog';
-import * as Icons from '@acme/ui/icons';
-import { useToast } from '@acme/ui/use-toast';
-import { useAuth } from '@clerk/nextjs';
-import { api } from '~/trpc/client';
-import { useRouter } from 'next/navigation';
+} from "@acme/ui/dialog";
+import * as Icons from "@acme/ui/icons";
+import { useToast } from "@acme/ui/use-toast";
+
+import { api } from "~/trpc/client";
 
 export function DeleteWorkspace() {
   const toaster = useToast();
   const router = useRouter();
   const { orgId } = useAuth();
 
-  const title = 'Delete workspace';
-  const description = 'This will delete the workspace and all of its data.';
+  const title = "Delete workspace";
+  const description = "This will delete the workspace and all of its data.";
 
   return (
     <Card>
@@ -69,13 +71,13 @@ export function DeleteWorkspace() {
                   try {
                     await api.organization.deleteOrganization.mutate();
                     toaster.toast({
-                      title: 'Workspace deleted',
+                      title: "Workspace deleted",
                     });
                     router.push(`/dashboard`);
                   } catch {
                     toaster.toast({
-                      title: 'The workspace could not be deleted',
-                      variant: 'destructive',
+                      title: "The workspace could not be deleted",
+                      variant: "destructive",
                     });
                   }
                 }}

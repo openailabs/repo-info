@@ -1,13 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 //@typescript-eslint/no-unsafe-assignment
 //@typescript-eslint/no-unsafe-member-access
 //@typescript-eslint/no-unsafe-call
 //@typescript-eslint/no-unsafe-argument
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
-import { useSession } from '@clerk/nextjs';
-import { api } from '~/trpc/client';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { useSession } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
+
+import { api } from "~/trpc/client";
 
 export function SubscribeNow(props: { planId: string }) {
   const router = useRouter();
@@ -16,7 +21,7 @@ export function SubscribeNow(props: { planId: string }) {
   return (
     <Button
       onClick={async () => {
-        if (!session.isSignedIn) router.push('/signin');
+        if (!session.isSignedIn) router.push("/signin");
 
         const billingPortal = await api.stripe.createSession.mutate({
           planId: props.planId,

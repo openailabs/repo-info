@@ -1,20 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 //@typescript-eslint/no-unsafe-assignment
 //@typescript-eslint/no-unsafe-member-access
 //@typescript-eslint/no-unsafe-call
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
-import { api } from '~/trpc/client';
+import { Button } from "@acme/ui/button";
+
+import { api } from "~/trpc/client";
 
 export function SubscriptionForm(props: { hasSubscription: boolean }) {
   async function createSession() {
-    const { url } = await api.stripe.createSession.mutate({ planId: '' });
+    const { url } = await api.stripe.createSession.mutate({ planId: "" });
     if (url) window.location.href = url;
   }
 
   return (
     <Button onClick={createSession}>
-      {props.hasSubscription ? 'Manage Subscription' : 'Upgrade'}
+      {props.hasSubscription ? "Manage Subscription" : "Upgrade"}
     </Button>
   );
 }

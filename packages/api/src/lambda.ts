@@ -1,6 +1,6 @@
-import { ingestionRouter } from './router/ingestion';
-import { stripeRouter } from './router/stripe';
-import { createTRPCRouter } from './trpc';
+import { ingestionRouter } from "./router/ingestion";
+import { stripeRouter } from "./router/stripe";
+import { createTRPCRouter } from "./trpc";
 
 // Deployed to /trpc/lambda/**
 export const lambdaRouter = createTRPCRouter({

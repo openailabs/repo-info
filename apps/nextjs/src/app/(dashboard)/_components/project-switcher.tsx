@@ -1,8 +1,13 @@
-'use client';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+"use client";
 
-import type { RouterOutputs } from '@acme/api';
-import { cn } from '@acme/ui';
-import { Button } from '@acme/ui/button';
+import * as React from "react";
+import { useParams, useRouter } from "next/navigation";
+import { Check, ChevronsUpDown, LayoutGrid } from "lucide-react";
+
+import type { RouterOutputs } from "@acme/api";
+import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
 import {
   Command,
   CommandGroup,
@@ -10,15 +15,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@acme/ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '@acme/ui/popover';
-import { getRandomPatternStyle } from '~/lib/generate-pattern';
-import { Check, ChevronsUpDown, LayoutGrid } from 'lucide-react';
-import { useParams, useRouter } from 'next/navigation';
-import * as React from 'react';
+} from "@acme/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
+
+import { getRandomPatternStyle } from "~/lib/generate-pattern";
 
 export function ProjectSwitcher(props: {
-  projectsPromise: Promise<RouterOutputs['project']['listByActiveWorkspace']>;
+  projectsPromise: Promise<RouterOutputs["project"]["listByActiveWorkspace"]>;
 }) {
   const router = useRouter();
 
@@ -61,7 +64,7 @@ export function ProjectSwitcher(props: {
             className="relative w-52 justify-between"
           >
             <div
-              style={getRandomPatternStyle(projectId)}
+              style={getRandomPatternStyle(projectId as string)}
               className="absolute inset-1 opacity-25"
             />
             <span className="z-10 font-semibold">{activeProject?.name}</span>
@@ -89,10 +92,10 @@ export function ProjectSwitcher(props: {
                   {project.name}
                   <Check
                     className={cn(
-                      'ml-auto h-4 w-4',
+                      "ml-auto h-4 w-4",
                       project.id === activeProject?.id
-                        ? 'opacity-100'
-                        : 'opacity-0'
+                        ? "opacity-100"
+                        : "opacity-0",
                     )}
                   />
                 </CommandItem>

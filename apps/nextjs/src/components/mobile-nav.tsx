@@ -1,23 +1,25 @@
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
-import * as Icons from '@acme/ui/icons';
-import { Popover, PopoverContent, PopoverTrigger } from '@acme/ui/popover';
-import { ScrollArea } from '@acme/ui/scroll-area';
-import { Search } from '~/app/(dashboard)/_components/search';
-import { navItems, siteConfig } from '~/app/config';
-import Link from 'next/link';
-import * as React from 'react';
-import ThemeToggle from './theme-toggle';
+import * as React from "react";
+import Link from "next/link";
+
+import { Button } from "@acme/ui/button";
+import * as Icons from "@acme/ui/icons";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
+import { ScrollArea } from "@acme/ui/scroll-area";
+
+import { Search } from "~/app/(dashboard)/_components/search";
+import { navItems, siteConfig } from "~/app/config";
+import ThemeToggle from "./theme-toggle";
 
 export function MobileDropdown() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('overflow-hidden');
+      document.body.classList.add("overflow-hidden");
     } else {
-      document.body.classList.remove('overflow-hidden');
+      document.body.classList.remove("overflow-hidden");
     }
   }, [isOpen]);
 

@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
-import * as Icons from '@acme/ui/icons';
-import { useToast } from '@acme/ui/use-toast';
-import { useSignIn } from '@clerk/nextjs';
-import type { OAuthStrategy } from '@clerk/types';
-import * as React from 'react';
+import * as React from "react";
+import { useSignIn } from "@clerk/nextjs";
+import type { OAuthStrategy } from "@clerk/types";
+
+import { Button } from "@acme/ui/button";
+import * as Icons from "@acme/ui/icons";
+import { useToast } from "@acme/ui/use-toast";
 
 export function OAuthSignIn() {
   const [isLoading, setIsLoading] = React.useState<OAuthStrategy | null>(null);
@@ -18,16 +19,16 @@ export function OAuthSignIn() {
       setIsLoading(provider);
       await signIn.authenticateWithRedirect({
         strategy: provider,
-        redirectUrl: '/sso-callback',
-        redirectUrlComplete: '/dashboard',
+        redirectUrl: "/sso-callback",
+        redirectUrlComplete: "/dashboard",
       });
     } catch (cause) {
       console.error(cause);
       setIsLoading(null);
       toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: 'Something went wrong, please try again.',
+        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong, please try again.",
       });
     }
   };
@@ -37,9 +38,9 @@ export function OAuthSignIn() {
       <Button
         variant="outline"
         className="bg-background"
-        onClick={() => oauthSignIn('oauth_github')}
+        onClick={() => oauthSignIn("oauth_github")}
       >
-        {isLoading === 'oauth_github' ? (
+        {isLoading === "oauth_github" ? (
           <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.GitHub className="mr-2 h-4 w-4" />
@@ -49,9 +50,9 @@ export function OAuthSignIn() {
       <Button
         variant="outline"
         className="bg-background"
-        onClick={() => oauthSignIn('oauth_google')}
+        onClick={() => oauthSignIn("oauth_google")}
       >
-        {isLoading === 'oauth_google' ? (
+        {isLoading === "oauth_google" ? (
           <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.Google className="mr-2 h-4 w-4" />

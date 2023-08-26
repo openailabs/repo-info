@@ -1,6 +1,6 @@
-import { DashboardShell } from '~/app/(dashboard)/_components/dashboard-shell';
-import { DataTable } from './data-table';
-import { NewApiKeyDialog } from './new-api-key-dialog';
+import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { DataTable } from "./data-table";
+import { NewApiKeyDialog } from "./new-api-key-dialog";
 
 export default function Loading() {
   return (

@@ -1,15 +1,19 @@
-'use client';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+"use client";
 
-import type { TransferToOrg } from '@acme/api/validators';
-import { transferToOrgSchema } from '@acme/api/validators';
-import { Button } from '@acme/ui/button';
+import { use } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+import type { TransferToOrg } from "@acme/api/validators";
+import { transferToOrgSchema } from "@acme/api/validators";
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
+} from "@acme/ui/card";
 import {
   Dialog,
   DialogClose,
@@ -19,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@acme/ui/dialog';
+} from "@acme/ui/dialog";
 import {
   Form,
   FormControl,
@@ -27,23 +31,23 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@acme/ui/form';
+} from "@acme/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@acme/ui/select';
-import { useToast } from '@acme/ui/use-toast';
-import { useZodForm } from '~/lib/zod-form';
-import type { RouterOutputs } from '~/trpc/client';
-import { api } from '~/trpc/client';
-import { useParams, useRouter } from 'next/navigation';
-import { use } from 'react';
+} from "@acme/ui/select";
+import { useToast } from "@acme/ui/use-toast";
+
+import { arrayToString } from "~/lib/strings";
+import { useZodForm } from "~/lib/zod-form";
+import type { RouterOutputs } from "~/trpc/client";
+import { api } from "~/trpc/client";
 
 export function TransferProjectToOrganization(props: {
-  orgsPromise: Promise<RouterOutputs['auth']['listOrganizations']>;
+  orgsPromise: Promise<RouterOutputs["auth"]["listOrganizations"]>;
 }) {
   const { workspaceId, projectId } = useParams();
   const orgs = use(props.orgsPromise);
@@ -54,27 +58,27 @@ export function TransferProjectToOrganization(props: {
   const form = useZodForm({
     schema: transferToOrgSchema,
     defaultValues: {
-      projectId,
+      projectId: arrayToString(projectId),
     },
   });
 
   async function onSubmit(data: TransferToOrg) {
     try {
-      if (!projectId) throw new Error('No project ID');
+      if (!projectId) throw new Error("No project ID");
 
       await api.project.transferToOrganization.mutate(data);
-      toaster.toast({ title: 'Project transferred' });
+      toaster.toast({ title: "Project transferred" });
       router.push(`/${data.orgId}/${projectId}`);
     } catch {
       toaster.toast({
-        title: 'Project could not be transferred',
-        variant: 'destructive',
+        title: "Project could not be transferred",
+        variant: "destructive",
       });
     }
   }
 
-  const title = 'Transfer to Organization';
-  const description = 'Transfer this project to an organization';
+  const title = "Transfer to Organization";
+  const description = "Transfer this project to an organization";
 
   return (
     <Card>

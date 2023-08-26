@@ -1,12 +1,14 @@
-import { genId } from '@acme/db';
-import { File } from 'undici';
-import { z } from 'zod';
-import { zfd } from 'zod-form-data';
+import { File } from "undici";
+import { z } from "zod";
+import { zfd } from "zod-form-data";
+
+import { genId } from "@acme/db";
+
 import {
   createTRPCRouter,
   protectedApiFormDataProcedure,
   protectedProcedure,
-} from '../trpc';
+} from "../trpc";
 
 // @ts-expect-error - zfd needs a File on the global scope
 globalThis.File = File;
@@ -54,7 +56,7 @@ export const ingestionRouter = createTRPCRouter({
       });
 
       if (!ingestion) {
-        throw new Error('Ingestion with the given id not found');
+        throw new Error("Ingestion with the given id not found");
       }
 
       return ingestion;
@@ -65,7 +67,7 @@ export const ingestionRouter = createTRPCRouter({
       z.object({
         projectId: z.string(),
         limit: z.number().optional(),
-      })
+      }),
     )
     .query(async (opts) => {
       // let query = opts.ctx.db
@@ -88,7 +90,7 @@ export const ingestionRouter = createTRPCRouter({
         },
         ...(opts.input.limit && {
           take: opts.input.limit,
-          orderBy: { createdAt: 'desc' },
+          orderBy: { createdAt: "desc" },
         }),
       });
 
@@ -105,13 +107,13 @@ export const ingestionRouter = createTRPCRouter({
         parent: zfd.text().optional(),
         origin: zfd.text(),
         // schema: myFileValidator,
-      })
+      }),
     )
     .mutation(async (opts) => {
       //   const fileContent = await opts.input.schema.text();
-      const fileContent = '';
+      const fileContent = "";
 
-      const id = 'ingest_' + genId();
+      const id = "ingest_" + genId();
       // await opts.ctx.db
       //     .insertInto('Ingestion')
       //     .values({
@@ -147,6 +149,6 @@ export const ingestionRouter = createTRPCRouter({
       //         apiKeyId: opts.ctx.apiKey.id,
       //     },
       // });
-      return { status: 'ok' };
+      return { status: "ok" };
     }),
 });

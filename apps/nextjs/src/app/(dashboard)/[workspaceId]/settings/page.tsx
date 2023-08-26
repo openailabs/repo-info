@@ -1,22 +1,24 @@
-import { Button } from '@acme/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@acme/ui/dialog';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@acme/ui/tabs';
-import { auth, clerkClient, UserProfile } from '@clerk/nextjs';
-import { api } from '~/trpc/server';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { DashboardShell } from '../../_components/dashboard-shell';
-import { LoadingCard } from '../[projectId]/_components/loading-card';
-import { InviteMemberForm } from './_components/invite-member-dialog';
-import { OrganizationImage } from './_components/organization-image';
-import { OrganizationMembers } from './_components/organization-members';
-import { OrganizationName } from './_components/organization-name';
+import { Suspense } from "react";
+import { notFound } from "next/navigation";
+import { auth, clerkClient, UserProfile } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@acme/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
+
+import { api } from "~/trpc/server";
+import { DashboardShell } from "../../_components/dashboard-shell";
+import { LoadingCard } from "../[projectId]/_components/loading-card";
+import { InviteMemberForm } from "./_components/invite-member-dialog";
+import { OrganizationImage } from "./_components/organization-image";
+import { OrganizationMembers } from "./_components/organization-members";
+import { OrganizationName } from "./_components/organization-name";
 
 export default function WorkspaceSettingsPage(props: {
   params: { workspaceId: string };
 }) {
   const { workspaceId } = props.params;
-  const isOrg = workspaceId.startsWith('org_');
+  const isOrg = workspaceId.startsWith("org_");
 
   if (isOrg)
     return (
@@ -99,16 +101,16 @@ function UserSettingsPage() {
       <UserProfile
         appearance={{
           variables: {
-            borderRadius: 'var(--radius)',
+            borderRadius: "var(--radius)",
             // colorBackground: "var(--background)",
           },
           elements: {
             // Main card element
-            card: 'shadow-none bg-background text-foreground',
-            navbar: 'hidden',
-            navbarMobileMenuButton: 'hidden',
-            headerTitle: 'hidden',
-            headerSubtitle: 'hidden',
+            card: "shadow-none bg-background text-foreground",
+            navbar: "hidden",
+            navbarMobileMenuButton: "hidden",
+            headerTitle: "hidden",
+            headerSubtitle: "hidden",
           },
         }}
       />

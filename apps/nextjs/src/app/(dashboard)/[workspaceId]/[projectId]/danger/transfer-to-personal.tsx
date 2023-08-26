@@ -1,13 +1,17 @@
-'use client';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+"use client";
 
-import { Button } from '@acme/ui/button';
+import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
+} from "@acme/ui/card";
 import {
   Dialog,
   DialogClose,
@@ -17,11 +21,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@acme/ui/dialog';
-import { useToast } from '@acme/ui/use-toast';
-import { useAuth } from '@clerk/nextjs';
-import { api } from '~/trpc/client';
-import { useParams, useRouter } from 'next/navigation';
+} from "@acme/ui/dialog";
+import { useToast } from "@acme/ui/use-toast";
+
+import { arrayToString } from "~/lib/strings";
+import { api } from "~/trpc/client";
 
 export function TransferProjectToPersonal() {
   const { projectId } = useParams();
@@ -29,8 +33,8 @@ export function TransferProjectToPersonal() {
   const toaster = useToast();
   const router = useRouter();
 
-  const title = 'Transfer to Personal';
-  const description = 'Transfer this project to your personal workspace';
+  const title = "Transfer to Personal";
+  const description = "Transfer this project to your personal workspace";
 
   return (
     <Card>
@@ -59,19 +63,19 @@ export function TransferProjectToPersonal() {
                 variant="destructive"
                 onClick={async () => {
                   try {
-                    if (!projectId) throw new Error('No project ID');
+                    if (!projectId) throw new Error("No project ID");
 
                     await api.project.transferToPersonal.mutate({
-                      id: projectId,
+                      id: arrayToString(projectId),
                     });
                     toaster.toast({
-                      title: 'Project transferred',
+                      title: "Project transferred",
                     });
                     router.push(`/${userId}/${projectId}`);
                   } catch {
                     toaster.toast({
-                      title: 'Project could not be transferred',
-                      variant: 'destructive',
+                      title: "Project could not be transferred",
+                      variant: "destructive",
                     });
                   }
                 }}

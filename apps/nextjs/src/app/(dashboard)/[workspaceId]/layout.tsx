@@ -1,5 +1,5 @@
-import { SidebarNav } from './_components/sidebar';
-import { SyncActiveOrgFromUrl } from './sync-active-org-from-url';
+import { SidebarNav } from "./_components/sidebar";
+import { SyncActiveOrgFromUrl } from "./sync-active-org-from-url";
 
 export default function WorkspaceLayout(props: {
   children: React.ReactNode;

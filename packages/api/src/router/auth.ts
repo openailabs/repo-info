@@ -1,5 +1,6 @@
-import { clerkClient } from '@clerk/nextjs';
-import { createTRPCRouter, protectedProcedure } from '../trpc';
+import { clerkClient } from "@clerk/nextjs";
+
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const authRouter = createTRPCRouter({
   mySubscription: protectedProcedure.query(async (opts) => {

@@ -1,5 +1,10 @@
-import { cn } from '@acme/ui';
-import { Button } from '@acme/ui/button';
+import { Suspense } from "react";
+import Link from "next/link";
+import { formatRelative } from "date-fns";
+import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
+
+import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardContent,
@@ -7,19 +12,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import * as Icons from '@acme/ui/icons';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@acme/ui/tabs';
-import { Overview } from '~/app/(dashboard)/[workspaceId]/[projectId]/_components/overview';
-import { userCanAccess } from '~/lib/project-guard';
-import type { RouterOutputs } from '~/trpc/server';
-import { api } from '~/trpc/server';
-import { formatRelative } from 'date-fns';
-import { Activity, CreditCard, DollarSign, Users } from 'lucide-react';
-import Link from 'next/link';
-import { Suspense } from 'react';
-import { DashboardShell } from '../../_components/dashboard-shell';
-import { LoadingCard } from './_components/loading-card';
+} from "@acme/ui/card";
+import * as Icons from "@acme/ui/icons";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
+
+import { Overview } from "~/app/(dashboard)/[workspaceId]/[projectId]/_components/overview";
+import { userCanAccess } from "~/lib/project-guard";
+import type { RouterOutputs } from "~/trpc/server";
+import { api } from "~/trpc/server";
+import { DashboardShell } from "../../_components/dashboard-shell";
+import { LoadingCard } from "./_components/loading-card";
 
 export default async function DashboardPage(props: {
   params: { workspaceId: string; projectId: string };
@@ -136,7 +138,7 @@ export default async function DashboardPage(props: {
 function IngestionCard(props: {
   projectId: string;
   workspaceId: string;
-  ingestion: RouterOutputs['ingestion']['list'][number];
+  ingestion: RouterOutputs["ingestion"]["list"][number];
 }) {
   const { ingestion } = props;
   const { adds, subs } = ingestion;
@@ -166,9 +168,9 @@ function IngestionCard(props: {
               <span
                 key={i}
                 className={cn(
-                  'inline-block h-2 w-2',
-                  i < addSquares ? 'bg-green-500' : 'bg-red-500',
-                  adds + subs === 0 && 'bg-gray-200'
+                  "inline-block h-2 w-2",
+                  i < addSquares ? "bg-green-500" : "bg-red-500",
+                  adds + subs === 0 && "bg-gray-200",
                 )}
               />
             ))}
@@ -196,7 +198,7 @@ async function RecentIngestions(props: {
         <CardTitle>Recent Ingestions</CardTitle>
         <CardDescription>
           {ingestions.length} ingestion
-          {ingestions.length > 1 ? 's' : null} recorded this period.
+          {ingestions.length > 1 ? "s" : null} recorded this period.
         </CardDescription>
       </CardHeader>
       <CardContent>

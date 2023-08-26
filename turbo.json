@@ -10,7 +10,7 @@
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
     "db:generate": {
-      "inputs": ["prisma/schema.prisma"],
+      "inputs": ["schema.zmodel"],
       "outputs": ["prisma/**"]
     },
     "db:push": {

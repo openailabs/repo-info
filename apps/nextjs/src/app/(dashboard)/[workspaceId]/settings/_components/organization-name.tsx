@@ -1,6 +1,9 @@
-'use client';
+"use client";
 
-import { Button } from '@acme/ui/button';
+import * as React from "react";
+import { useOrganization } from "@clerk/nextjs";
+
+import { Button } from "@acme/ui/button";
 import {
   Card,
   CardContent,
@@ -8,12 +11,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import { Input } from '@acme/ui/input';
-import { Label } from '@acme/ui/label';
-import { useToast } from '@acme/ui/use-toast';
-import { useOrganization } from '@clerk/nextjs';
-import * as React from 'react';
+} from "@acme/ui/card";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
+import { useToast } from "@acme/ui/use-toast";
 
 export function OrganizationName(props: { name: string; orgId: string }) {
   const { organization } = useOrganization();
@@ -31,14 +32,14 @@ export function OrganizationName(props: { name: string; orgId: string }) {
         className="flex flex-col space-y-2"
         onSubmit={async (e) => {
           e.preventDefault();
-          const name = new FormData(e.currentTarget).get('name');
-          if (!name || typeof name !== 'string') return;
+          const name = new FormData(e.currentTarget).get("name");
+          if (!name || typeof name !== "string") return;
           setUpdating(true);
           await organization?.update({ name, slug: props.orgId });
           setUpdating(false);
           toast({
-            title: 'Organization name updated',
-            description: 'Your organization name has been updated.',
+            title: "Organization name updated",
+            description: "Your organization name has been updated.",
           });
         }}
       >

@@ -1,22 +1,25 @@
-import 'react-image-crop/dist/ReactCrop.css';
-import '~/styles/globals.css';
-import { cn } from '@acme/ui';
-import { Toaster } from '@acme/ui/toaster';
-import { ClerkProvider } from '@clerk/nextjs';
-import { Analytics } from '@vercel/analytics/react';
-import { TailwindIndicator } from '~/components/tailwind-indicator';
-import { ThemeProvider } from '~/components/theme-provider';
-import { Inter } from 'next/font/google';
-import LocalFont from 'next/font/local';
-import { siteConfig } from './config';
+import "react-image-crop/dist/ReactCrop.css";
+import "~/styles/globals.css";
+
+import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react";
+
+import { cn } from "@acme/ui";
+import { Toaster } from "@acme/ui/toaster";
+
+import { TailwindIndicator } from "~/components/tailwind-indicator";
+import { ThemeProvider } from "~/components/theme-provider";
+import { siteConfig } from "./config";
 
 const fontSans = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 const fontCal = LocalFont({
-  src: '../styles/calsans.ttf',
-  variable: '--font-cal',
+  src: "../styles/calsans.ttf",
+  variable: "--font-cal",
 });
 
 export const metadata = {
@@ -26,19 +29,19 @@ export const metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: '/favicon.ico',
+    icon: "/favicon.ico",
   },
   openGraph: {
-    images: [{ url: '/opengraph-image.png' }],
+    images: [{ url: "/opengraph-image.png" }],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [{ url: 'https://acme-corp-lib.vercel.app/opengraph-image.png' }],
-    creator: '@jullerino',
+    images: [{ url: "https://acme-corp-lib.vercel.app/opengraph-image.png" }],
+    creator: "@jullerino",
   },
-  metadataBase: new URL('https://acme-corp.jumr.dev'),
+  metadataBase: new URL("https://acme-corp.jumr.dev"),
 };
 
 export default function RootLayout(props: { children: React.ReactNode }) {
@@ -48,9 +51,9 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <html lang="en" suppressHydrationWarning className="bg-background">
           <body
             className={cn(
-              'min-h-screen font-sans antialiased',
+              "min-h-screen font-sans antialiased",
               fontSans.variable,
-              fontCal.variable
+              fontCal.variable,
             )}
           >
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

@@ -1,14 +1,6 @@
 import { middlewares } from "./middlewares/middlewares";
 import { withClerkAuth } from "./middlewares/withClerkAuth";
-import { withContentEncoding } from "./middlewares/withContentEncoding";
 import { withCors } from "./middlewares/withCors";
-import { withErrorHandler } from "./middlewares/withErrorHandler";
-import { withHeaders } from "./middlewares/withHeaders";
-import { withLogging } from "./middlewares/withLogging";
-import {
-  DefaultLruRateLimitingParams,
-  withLruRateLimiting,
-} from "./middlewares/withLruRateLimiting";
 
 // export default middlewares([
 //   // withCors,

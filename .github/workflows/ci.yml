@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v2.4.0
 
       - name: Setup Node 18
         uses: actions/setup-node@v3
@@ -50,7 +50,7 @@ jobs:
       - run: cp .env.example .env.local
 
       - name: Build, lint and type-check
-        run: pnpm turbo build lint type-check
+        run: pnpm turbo build lint typecheck format
 
       - name: Check workspaces
         run: pnpm manypkg check

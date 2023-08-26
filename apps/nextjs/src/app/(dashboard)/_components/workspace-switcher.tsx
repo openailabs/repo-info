@@ -1,14 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 //@typescript-eslint/no-unsafe-assignment
 //@typescript-eslint/no-unsafe-member-access
 //@typescript-eslint/no-unsafe-call
 //@typescript-eslint/no-unsafe-argument
-'use client';
+"use client";
 
-import type { PurchaseOrg } from '@acme/api/validators';
-import { purchaseOrgSchema } from '@acme/api/validators';
-import { cn } from '@acme/ui';
-import { Avatar, AvatarFallback, AvatarImage } from '@acme/ui/avatar';
-import { Button } from '@acme/ui/button';
+import * as React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useOrganization, useOrganizationList, useUser } from "@clerk/nextjs";
+import { Check, ChevronsUpDown, PlusCircle } from "lucide-react";
+
+import type { PurchaseOrg } from "@acme/api/validators";
+import { purchaseOrgSchema } from "@acme/api/validators";
+import { cn } from "@acme/ui";
+import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
+import { Button } from "@acme/ui/button";
 import {
   Command,
   CommandGroup,
@@ -16,7 +26,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@acme/ui/command';
+} from "@acme/ui/command";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +35,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@acme/ui/dialog';
+} from "@acme/ui/dialog";
 import {
   Form,
   FormControl,
@@ -33,24 +43,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@acme/ui/form';
-import { Input } from '@acme/ui/input';
-import { Popover, PopoverContent, PopoverTrigger } from '@acme/ui/popover';
+} from "@acme/ui/form";
+import { Input } from "@acme/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@acme/ui/select';
-import { useToast } from '@acme/ui/use-toast';
-import { useOrganization, useOrganizationList, useUser } from '@clerk/nextjs';
-import { useZodForm } from '~/lib/zod-form';
-import { api } from '~/trpc/client';
-import { Check, ChevronsUpDown, PlusCircle } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import * as React from 'react';
+} from "@acme/ui/select";
+import { useToast } from "@acme/ui/use-toast";
+
+import { useZodForm } from "~/lib/zod-form";
+import { api } from "~/trpc/client";
 
 export function WorkspaceSwitcher() {
   const router = useRouter();
@@ -62,7 +68,7 @@ export function WorkspaceSwitcher() {
   const org = useOrganization();
 
   const { user, isSignedIn, isLoaded } = useUser();
-  if (isLoaded && !isSignedIn) throw new Error('How did you get here???');
+  if (isLoaded && !isSignedIn) throw new Error("How did you get here???");
 
   const activeOrg = org.organization ?? user;
   if (!orgs.isLoaded || !org.isLoaded || !activeOrg) {
@@ -87,7 +93,7 @@ export function WorkspaceSwitcher() {
 
   const normalizedObject = {
     id: activeOrg.id,
-    name: 'name' in activeOrg ? activeOrg.name : activeOrg.fullName,
+    name: "name" in activeOrg ? activeOrg.name : activeOrg.fullName,
     image: activeOrg.imageUrl,
   };
 
@@ -104,7 +110,7 @@ export function WorkspaceSwitcher() {
             className="w-52 justify-between"
           >
             <Avatar className="mr-2 h-5 w-5">
-              <AvatarImage src={normalizedObject?.image ?? ''} />
+              <AvatarImage src={normalizedObject?.image ?? ""} />
               <AvatarFallback>
                 {normalizedObject.name?.substring(0, 2)}
               </AvatarFallback>
@@ -121,7 +127,7 @@ export function WorkspaceSwitcher() {
                 <CommandItem
                   onSelect={async () => {
                     if (!user?.id) return;
-                    normalizedObject.id = user.id ?? '';
+                    normalizedObject.id = user.id ?? "";
 
                     await orgs.setActive?.({
                       organization: null,
@@ -134,17 +140,17 @@ export function WorkspaceSwitcher() {
                   <Avatar className="mr-2 h-5 w-5">
                     <AvatarImage
                       src={user?.imageUrl}
-                      alt={user?.fullName ?? ''}
+                      alt={user?.fullName ?? ""}
                     />
                     <AvatarFallback>
-                      {`${user?.firstName?.[0]}${user?.lastName?.[0]}` ?? 'JD'}
+                      {`${user?.firstName?.[0]}${user?.lastName?.[0]}` ?? "JD"}
                     </AvatarFallback>
                   </Avatar>
                   {user?.fullName}
                   <Check
                     className={cn(
-                      'ml-auto h-4 w-4',
-                      org.organization === null ? 'opacity-100' : 'opacity-0'
+                      "ml-auto h-4 w-4",
+                      org.organization === null ? "opacity-100" : "opacity-0",
                     )}
                   />
                 </CommandItem>
@@ -165,7 +171,7 @@ export function WorkspaceSwitcher() {
                   >
                     <Avatar className="mr-2 h-5 w-5">
                       <AvatarImage
-                        src={org.imageUrl ?? '/images/placeholder.png'}
+                        src={org.imageUrl ?? "/images/placeholder.png"}
                         alt={org.name}
                       />
                       <AvatarFallback>
@@ -175,10 +181,10 @@ export function WorkspaceSwitcher() {
                     {org.name}
                     <Check
                       className={cn(
-                        'ml-auto h-4 w-4',
+                        "ml-auto h-4 w-4",
                         normalizedObject?.id === org.id
-                          ? 'opacity-100'
-                          : 'opacity-0'
+                          ? "opacity-100"
+                          : "opacity-0",
                       )}
                     />
                   </CommandItem>
@@ -228,10 +234,10 @@ function NewOrganizationDialog(props: { closeDialog: () => void }) {
     if (response.success) window.location.href = response.url;
     else
       toaster.toast({
-        title: 'Error',
+        title: "Error",
         description:
-          'There was an error setting up your organization. Please try again.',
-        variant: 'destructive',
+          "There was an error setting up your organization. Please try again.",
+        variant: "destructive",
       });
   }
 
@@ -289,7 +295,7 @@ function NewOrganizationDialog(props: { closeDialog: () => void }) {
                   <SelectContent>
                     {plans.map((plan) => (
                       <SelectItem key={plan.id} value={plan.id}>
-                        <span className="font-medium">{plan.name}</span> -{' '}
+                        <span className="font-medium">{plan.name}</span> -{" "}
                         <span className="text-muted-foreground">
                           ${plan.amount / 100} per month
                         </span>

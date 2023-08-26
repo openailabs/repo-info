@@ -4,8 +4,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@acme/ui/card';
-import * as Icons from '@acme/ui/icons';
+} from "@acme/ui/card";
+import * as Icons from "@acme/ui/icons";
 
 export function LoadingCard(props: {
   title: string;

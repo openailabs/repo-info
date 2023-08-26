@@ -1,7 +1,8 @@
-import type { Route } from 'next';
-import Link from 'next/link';
-import { EmailSignIn } from './email-signin';
-import { OAuthSignIn } from './oauth-signin';
+import type { Route } from "next";
+import Link from "next/link";
+
+import { EmailSignIn } from "./email-signin";
+import { OAuthSignIn } from "./oauth-signin";
 
 // export const runtime = "edge";
 
@@ -34,16 +35,16 @@ export default function AuthenticationPage() {
       </div>
 
       <p className="px-8 text-center text-sm text-muted-foreground">
-        By clicking continue, you agree to our{' '}
+        By clicking continue, you agree to our{" "}
         <Link
-          href={'/terms' as Route}
+          href={"/terms" as Route}
           className="underline underline-offset-4 hover:text-primary"
         >
           Terms of Service
-        </Link>{' '}
-        and{' '}
+        </Link>{" "}
+        and{" "}
         <Link
-          href={'/privacy' as Route}
+          href={"/privacy" as Route}
           className="underline underline-offset-4 hover:text-primary"
         >
           Privacy Policy

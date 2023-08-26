@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import * as Icons from '@acme/ui/icons';
-import { useClerk } from '@clerk/nextjs';
-import type { HandleOAuthCallbackParams } from '@clerk/types';
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import { useClerk } from "@clerk/nextjs";
+import type { HandleOAuthCallbackParams } from "@clerk/types";
+
+import * as Icons from "@acme/ui/icons";
 
 // export const runtime = "edge";
 
