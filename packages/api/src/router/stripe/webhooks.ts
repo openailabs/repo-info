@@ -1,7 +1,3 @@
- 
- 
- 
- 
 import clerkClient from "@clerk/clerk-sdk-node";
 import type { Customer } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
