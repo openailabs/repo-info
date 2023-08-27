@@ -1,4 +1,5 @@
 import { clerkClient } from "@clerk/nextjs";
+import type { Customer } from "@prisma/client";
 
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
@@ -9,7 +10,7 @@ export const authRouter = createTRPCRouter({
     //     .select(['plan', 'endsAt'])
     //     .where('clerkUserId', '=', opts.ctx.auth.userId)
     //     .executeTakeFirst();
-    const customer = await opts.ctx.db.customer.findFirst({
+    const customer = await opts.ctx.db.customer.findFirst<Customer>({
       where: {
         clerkUserId: opts.ctx.auth.userId,
       },

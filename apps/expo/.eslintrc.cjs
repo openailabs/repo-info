@@ -1,10 +1,10 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
   root: true,
-  extends: ['@acme/eslint-config/base', '@acme/eslint-config/react'],
+  extends: ["@acme/eslint-config/base", "@acme/eslint-config/react-library"],
   rules: {
     // TODO: Enable later when this app is implemented properly
-    '@typescript-eslint/no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": "off",
   },
 };
 

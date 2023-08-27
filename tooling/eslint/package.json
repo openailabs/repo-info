@@ -6,12 +6,14 @@
   "files": [
     "./base.js",
     "./nextjs.js",
-    "./react.js"
+    "./react-library.js"
   ],
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{js,json}\"",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check \"**/*.{mjs,ts,tsx,js,json}\"",
+    "format:fix": "prettier --write \"**/*.{mjs,ts,tsx,js,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

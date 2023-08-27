@@ -5,7 +5,6 @@
   "main": "index.mjs",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "format": "prettier --check \"**/*.{mjs,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,5 +16,10 @@
     "@acme/tsconfig": "^0.1.0",
     "typescript": "^5.2.2"
   },
-  "prettier": "@acme/prettier-config"
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/react-library"
+    ]
+  }
 }

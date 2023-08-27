@@ -56,7 +56,7 @@
     "root": true,
     "extends": [
       "@acme/eslint-config/base",
-      "@acme/eslint-config/react"
+      "@acme/eslint-config/react-library"
     ]
   },
   "prettier": "@acme/prettier-config"

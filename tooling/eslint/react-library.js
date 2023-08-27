@@ -1,6 +1,7 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
   extends: [
+    "./base",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",

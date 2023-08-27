@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "files": [
-    "base.json"
-  ]
+    "base.json",
+    "react-library.json",
+    "nextjs.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

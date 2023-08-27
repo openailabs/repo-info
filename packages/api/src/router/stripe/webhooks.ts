@@ -1,4 +1,5 @@
 import clerkClient from "@clerk/clerk-sdk-node";
+import type { Customer } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 import * as z from "zod";
@@ -48,7 +49,7 @@ export const webhookRouter = createTRPCRouter({
     //   .where("stripeId", "=", customerId)
     //   .executeTakeFirst();
 
-    const customer = await opts.ctx.db.customer.findFirst({
+    const customer: Customer = await opts.ctx.db.customer.findFirst<Customer>({
       where: {
         stripeId: customerId,
       },
@@ -76,7 +77,7 @@ export const webhookRouter = createTRPCRouter({
       //     })
       //     .execute();
 
-      return await opts.ctx.db.customer.update({
+      return await opts.ctx.db.customer.update<Customer>({
         where: {
           id: customer.id,
         },
@@ -110,7 +111,7 @@ export const webhookRouter = createTRPCRouter({
     //     endsAt: new Date(subscription.current_period_end * 1000),
     //   })
     //   .execute();
-    await opts.ctx.db.customer.create({
+    await opts.ctx.db.customer.create<Customer>({
       data: {
         id: genId(),
         clerkUserId: userId ?? "wh",
@@ -148,7 +149,7 @@ export const webhookRouter = createTRPCRouter({
     //     paidUntil: new Date(subscription.current_period_end * 1000),
     //   })
     //   .execute();
-    await opts.ctx.db.customer.updateMany({
+    await opts.ctx.db.customer.updateMany<Customer[]>({
       where: {
         subscriptionId: subscription.id,
       },
@@ -175,7 +176,7 @@ export const webhookRouter = createTRPCRouter({
     //     paidUntil: null,
     //   })
     //   .execute();
-    await opts.ctx.db.customer.update({
+    await opts.ctx.db.customer.update<Customer>({
       where: {
         stripeId: customerId,
       },
@@ -206,7 +207,7 @@ export const webhookRouter = createTRPCRouter({
     //     paidUntil: new Date(subscription.current_period_end * 1000),
     //   })
     //   .execute();
-    await opts.ctx.db.customer.update({
+    await opts.ctx.db.customer.update<Customer>({
       where: {
         stripeId: customerId,
       },

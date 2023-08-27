@@ -1,8 +1,8 @@
 {
-  "extends": "@acme/tsconfig/base.json",
+  "extends": "@acme/tsconfig/react-library",
   "compilerOptions": {
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
-  "include": ["."],
+  "include": ["*.js", "src"],
   "exclude": ["node_modules"]
 }
