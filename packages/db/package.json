@@ -38,7 +38,6 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base",
       "@acme/eslint-config/react-library"
     ]
   },
