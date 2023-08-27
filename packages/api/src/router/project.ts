@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+ 
+ 
+ 
 import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import type { Project } from "@acme/db/src";
-import { genId } from "@acme/db/src";
+import type { Project } from "@acme/db";
+import { genId } from "@acme/db";
 
 import {
   createTRPCRouter,
@@ -20,7 +20,7 @@ import {
   transferToOrgSchema,
 } from "../validators";
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+ 
 const PROJECT_LIMITS = {
   FREE: 1000,
   PRO: 3000,

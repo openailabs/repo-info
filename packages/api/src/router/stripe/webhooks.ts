@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+ 
+ 
+ 
+ 
 import clerkClient from "@clerk/clerk-sdk-node";
 import type { Customer } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 import * as z from "zod";
 
-import { genId } from "@acme/db/src";
+import { genId } from "@acme/db";
 
 import { createTRPCRouter, publicProcedure } from "../../trpc";
 import { stripe, stripePriceToSubscriptionPlan } from "./shared";
