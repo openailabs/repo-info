@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import { genId } from "@acme/db";
+import type { Project } from "@acme/db/src";
+import { genId } from "@acme/db/src";
 
 import {
   createTRPCRouter,
@@ -16,6 +20,7 @@ import {
   transferToOrgSchema,
 } from "../validators";
 
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 const PROJECT_LIMITS = {
   FREE: 1000,
   PRO: 3000,
@@ -40,7 +45,7 @@ export const projectRouter = createTRPCRouter({
       // }
       // const projects = (await query.executeTakeFirst())?.projects ?? 0;
 
-      let projects = await opts.ctx.db.project.count({
+      let projects: number = await opts.ctx.db.project.count<Project>({
         where: orgId ? { organizationId: orgId } : { userId: userId },
       });
 
@@ -65,7 +70,7 @@ export const projectRouter = createTRPCRouter({
       //         organizationId: orgId,
       //     })
       //     .execute();
-      await opts.ctx.db.project.create({
+      await opts.ctx.db.project.create<Project>({
         data: {
           id: projectId,
           name: name,
@@ -91,7 +96,7 @@ export const projectRouter = createTRPCRouter({
       //     })
       //     .where('id', '=', projectId)
       //     .execute();
-      await opts.ctx.db.project.update({
+      await opts.ctx.db.project.update<Project>({
         where: {
           id: projectId,
         },
@@ -119,7 +124,7 @@ export const projectRouter = createTRPCRouter({
       // return await deleteQuery.where('userId', '=', userId).execute();
 
       if (orgId) {
-        return await opts.ctx.db.project.deleteMany({
+        return await opts.ctx.db.project.deleteMany<Project[]>({
           where: {
             id: opts.input.id,
             organizationId: orgId,
@@ -127,7 +132,7 @@ export const projectRouter = createTRPCRouter({
         });
       }
 
-      return await opts.ctx.db.project.deleteMany({
+      return await opts.ctx.db.project.deleteMany<Project[]>({
         where: {
           id: opts.input.id,
           userId: userId,
@@ -143,7 +148,7 @@ export const projectRouter = createTRPCRouter({
       //     .select(['id', 'userId', 'organizationId'])
       //     .where('id', '=', opts.input.id)
       //     .executeTakeFirst();
-      const project = await opts.ctx.db.project.findFirst({
+      const project = await opts.ctx.db.project.findFirst<Project>({
         where: {
           id: opts.input.id,
         },
@@ -176,7 +181,7 @@ export const projectRouter = createTRPCRouter({
       //     })
       //     .where('id', '=', project.id)
       //     .execute();
-      await opts.ctx.db.project.update({
+      await opts.ctx.db.project.update<Project>({
         where: { id: project.id },
         data: {
           userId: opts.ctx.auth.userId,
@@ -217,7 +222,7 @@ export const projectRouter = createTRPCRouter({
       //     )
       //     .executeTakeFirst();
 
-      const project = await opts.ctx.db.project.findFirst({
+      const project = await opts.ctx.db.project.findFirst<Project>({
         where: {
           id: opts.input.projectId,
           OR: [{ userId: userId }, { organizationId: userOrgId }],
@@ -290,7 +295,7 @@ export const projectRouter = createTRPCRouter({
     let projects;
 
     if (orgId) {
-      projects = await opts.ctx.db.project.findMany({
+      projects = await opts.ctx.db.project.findMany<Project[]>({
         where: {
           organizationId: orgId,
         },
@@ -302,7 +307,7 @@ export const projectRouter = createTRPCRouter({
         },
       });
     } else {
-      projects = await opts.ctx.db.project.findMany({
+      projects = await opts.ctx.db.project.findMany<Project[]>({
         where: {
           userId: userId,
         },
@@ -353,7 +358,7 @@ export const projectRouter = createTRPCRouter({
       //     );
 
       // const project = await query.executeTakeFirst();
-      const project = await opts.ctx.db.project.findFirst({
+      const project = await opts.ctx.db.project.findFirst<Project>({
         where: {
           AND: [
             { id: id },
@@ -430,7 +435,7 @@ export const projectRouter = createTRPCRouter({
 
       const currentDate = new Date();
 
-      const apiKeys = await opts.ctx.db.apiKey.findMany({
+      const apiKeys = await opts.ctx.db.apiKey.findMany<Project[]>({
         where: {
           projectId: projectId,
           clerkUserId: userId,

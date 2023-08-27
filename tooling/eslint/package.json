@@ -6,7 +6,7 @@
   "files": [
     "./base.js",
     "./nextjs.js",
-    "./react.js"
+    "./react-library.js"
   ],
   "scripts": {
     "clean": "rm -rf .turbo node_modules",

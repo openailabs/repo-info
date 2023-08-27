@@ -61,13 +61,5 @@
     "tailwindcss": "3.3.3",
     "typescript": "^5.2.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/nextjs",
-      "@acme/eslint-config/react"
-    ]
-  },
   "prettier": "@acme/prettier-config"
 }

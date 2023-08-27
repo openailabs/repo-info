@@ -4,7 +4,7 @@ const config = {
   extends: [
     "@acme/eslint-config/base",
     "@acme/eslint-config/nextjs",
-    "@acme/eslint-config/react",
+    "@acme/eslint-config/react-library",
   ],
 };
 

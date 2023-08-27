@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { NextRequest } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import { enhance } from "@zenstackhq/runtime";

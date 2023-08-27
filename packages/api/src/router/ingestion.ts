@@ -2,6 +2,7 @@ import { File } from "undici";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 
+import type { Ingestion } from "@acme/db";
 import { genId } from "@acme/db";
 
 import {
@@ -43,17 +44,18 @@ export const ingestionRouter = createTRPCRouter({
       //     ])
       //     .where('id', '=', opts.input.id)
       //     .executeTakeFirstOrThrow();
-      const ingestion = await opts.ctx.db.ingestion.findUnique({
-        where: { id: opts.input.id },
-        select: {
-          id: true,
-          createdAt: true,
-          hash: true,
-          schema: true,
-          origin: true,
-          parent: true,
-        },
-      });
+      const ingestion: Ingestion =
+        await opts.ctx.db.ingestion.findUnique<Ingestion>({
+          where: { id: opts.input.id },
+          select: {
+            id: true,
+            createdAt: true,
+            hash: true,
+            schema: true,
+            origin: true,
+            parent: true,
+          },
+        });
 
       if (!ingestion) {
         throw new Error("Ingestion with the given id not found");
@@ -81,7 +83,9 @@ export const ingestionRouter = createTRPCRouter({
       //         .orderBy('createdAt', 'desc');
       // }
       // const ingestions = await query.execute();
-      const ingestions = await opts.ctx.db.ingestion.findMany({
+      const ingestions: Ingestion[] = await opts.ctx.db.ingestion.findMany<
+        Ingestion[]
+      >({
         where: { projectId: opts.input.projectId },
         select: {
           id: true,

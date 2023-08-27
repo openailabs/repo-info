@@ -21,7 +21,9 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{mjs,ts,json}\"",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check \"**/*.{ts,json}\"",
+    "format:fix": "prettier --write \"**/*.{ts,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
