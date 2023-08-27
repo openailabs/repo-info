@@ -10,7 +10,9 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{js,ts,json}\"",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check \"**/*.{mjs,ts,tsx,js,json}\"",
+    "format:fix": "prettier --write \"**/*.{mjs,ts,tsx,js,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
