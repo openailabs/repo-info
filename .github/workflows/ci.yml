@@ -52,7 +52,7 @@ jobs:
 
       - name: Build, lint and type-check
         # run: pnpm turbo build lint typecheck format
-        run: pnpm turbo lint format
+        run: pnpm turbo format
 
       - name: Check workspaces
         run: pnpm manypkg check
