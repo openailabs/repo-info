@@ -23,7 +23,7 @@ export const stripeRouter = createTRPCRouter({
       //   .where("clerkUserId", "=", userId)
       //   .executeTakeFirst();
 
-      // const returnUrl = env.NEXTJS_URL + "/dashboard";
+      // const returnUrl = env.NEXT_PUBLIC_APP_URL + "/dashboard";
 
       // if (customer && customer.plan !== "FREE") {
       //   /**
@@ -60,7 +60,7 @@ export const stripeRouter = createTRPCRouter({
 
       // if (!session.url) return { success: false as const };
       // return { success: true as const, url: session.url };
-      const url = `${env.NEXTJS_URL}/dashboard`;
+      const url = `${env.NEXT_PUBLIC_APP_URL}/dashboard`;
       return { success: true as const, url };
     }),
 
@@ -123,13 +123,13 @@ export const stripeRouter = createTRPCRouter({
     //   subscription_data: {
     //     metadata: { userId, organizationName: orgName },
     //   },
-    //   success_url: `${env.NEXTJS_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXTJS_URL,
+    //   success_url: `${env.NEXT_PUBLIC_APP_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXT_PUBLIC_APP_URL,
     //   line_items: [{ price: planId, quantity: 1 }],
     // });
 
     // if (!session.url) return { success: false as const };
     // return { success: true as const, url: session.url };
-    const url = `${env.NEXTJS_URL}/dashboard`;
+    const url = `${env.NEXT_PUBLIC_APP_URL}/dashboard`;
     return { success: true as const, url };
   }),
 });
