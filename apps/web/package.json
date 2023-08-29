@@ -18,9 +18,7 @@
     "@acme/api": "^0.1.0",
     "@acme/db": "^0.1.0",
     "@acme/ui": "^0.1.0",
-    "@clerk/nextjs": "^4.23.2",
-    "@dinero.js/currencies": "2.0.0-alpha.14",
-    "@hookform/resolvers": "^3.3.0",
+    "@hookform/resolvers": "^3.3.1",
     "@next/mdx": "13.4.19",
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tanstack/react-query": "^5.0.0-beta.16",
@@ -34,7 +32,6 @@
     "@zenstackhq/server": "^1.0.0-beta.20",
     "@zenstackhq/tanstack-query": "^1.0.0-beta.20",
     "date-fns": "^2.30.0",
-    "dinero.js": "2.0.0-alpha.14",
     "framer-motion": "^10.16.1",
     "lru-cache": "^10.0.1",
     "next": "13.4.19",
@@ -49,8 +46,8 @@
     "react-wrap-balancer": "^1.1.0",
     "recharts": "^2.8.0",
     "superjson": "1.13.1",
-    "tailwindcss-animate": "^1.0.6",
-    "zod": "^3.22.1"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.2.0",
@@ -58,7 +55,7 @@
     "@acme/tailwind-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
     "@types/mdx": "^2.0.7",
-    "@types/node": "^20.5.6",
+    "@types/node": "^20.5.7",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@zenstackhq/swr": "^1.0.0-beta.20",
