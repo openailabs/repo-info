@@ -10,3 +10,13 @@ model Mark extends Auditable {
   @@unique([owner, name, userId])
   @@index([owner, name, userId])
 }
+
+model RepoInfo extends Auditable {
+    owner   String
+    name    String
+    summary Json?
+    detail  Json?
+
+    @@unique([owner, name])
+    @@index([owner, name])
+}

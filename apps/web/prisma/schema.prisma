@@ -88,3 +88,17 @@ model Mark {
     @@unique([owner, name, userId])
     @@index([owner, name, userId])
 }
+
+model RepoInfo {
+    id String @id() @default(cuid())
+    createdAt DateTime? @map(name: "created_at") @default(now())
+    createdBy String? @map(name: "created_by")
+    updatedAt DateTime? @map(name: "updated_at") @updatedAt()
+    updatedBy String? @map(name: "updated_by")
+    owner String
+    name String
+    summary Json?
+    detail Json?
+    @@unique([owner, name])
+    @@index([owner, name])
+}
