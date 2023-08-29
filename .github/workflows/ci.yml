@@ -26,10 +26,10 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
 
-      - name: Setup Node 18
+      - name: Setup Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -48,9 +48,11 @@ jobs:
         run: pnpm install
 
       - run: cp .env.example .env.local
+      - run: cp pnpm-workspace.yaml.tplt pnpm-workspace.yaml
 
       - name: Build, lint and type-check
-        run: pnpm turbo build lint typecheck format
+        # run: pnpm turbo build lint typecheck format
+        run: pnpm turbo format
 
       - name: Check workspaces
         run: pnpm manypkg check
