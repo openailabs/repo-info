@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@acme/prettier-config": "0.1.0",
-    "@commitlint/cli": "^17.5.0",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@manypkg/cli": "^0.21.0",
     "@turbo/gen": "^1.10.13",
     "commitizen": "^4.3.0",

@@ -11,17 +11,17 @@ importers:
         specifier: 0.1.0
         version: link:tooling/prettier
       "@commitlint/cli":
-        specifier: ^17.5.0
-        version: 17.5.0
+        specifier: ^17.7.1
+        version: 17.7.1
       "@commitlint/config-conventional":
-        specifier: ^17.4.4
-        version: 17.4.4
+        specifier: ^17.7.0
+        version: 17.7.0
       "@manypkg/cli":
         specifier: ^0.21.0
         version: 0.21.0
       "@turbo/gen":
         specifier: ^1.10.13
-        version: 1.10.13(@types/node@20.5.6)(typescript@5.2.2)
+        version: 1.10.13(@types/node@20.5.7)(typescript@5.2.2)
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0
@@ -551,6 +551,17 @@ packages:
     dependencies:
       "@babel/highlight": 7.22.10
       chalk: 2.4.2
+    dev: false
+
+  /@babel/code-frame@7.22.13:
+    resolution:
+      {
+        integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==,
+      }
+    engines: { node: ">=6.9.0" }
+    dependencies:
+      "@babel/highlight": 7.22.13
+      chalk: 2.4.2
 
   /@babel/compat-data@7.22.9:
     resolution:
@@ -730,6 +741,18 @@ packages:
     resolution:
       {
         integrity: sha512-78aUtVcT7MUscr0K5mIEnkwxPE0MaxkR5RxRwuHaQ+JuU5AmTPhY+do2mdzVTnIJJpyBglql2pehuBIWHug+WQ==,
+      }
+    engines: { node: ">=6.9.0" }
+    dependencies:
+      "@babel/helper-validator-identifier": 7.22.5
+      chalk: 2.4.2
+      js-tokens: 4.0.0
+    dev: false
+
+  /@babel/highlight@7.22.13:
+    resolution:
+      {
+        integrity: sha512-C/BaXcnnvBCmHTpz/VGZ8jgtE2aYlW4hxDhseJAWZb7gqGM/qtCK6iZUb0TyKFf7BOUsBH7Q7fkRsDRhg1XklQ==,
       }
     engines: { node: ">=6.9.0" }
     dependencies:
@@ -939,10 +962,10 @@ packages:
       csstype: 3.1.1
     dev: false
 
-  /@commitlint/cli@17.5.0:
+  /@commitlint/cli@17.7.1:
     resolution:
       {
-        integrity: sha512-yNW3+M7UM1ioK28LKTrryIVB5qGpXlEv8+rJQiWPMZNayy9/1XR5+lL8qBTNlgopYtZWWnIm5RETcAN29ZTL/A==,
+        integrity: sha512-BCm/AT06SNCQtvFv921iNhudOHuY16LswT0R3OeolVGLk8oP+Rk9TfQfgjH7QPMjhvp76bNqGFEcpKojxUNW1g==,
       }
     engines: { node: ">=v14" }
     hasBin: true
@@ -962,14 +985,14 @@ packages:
       - "@swc/wasm"
     dev: false
 
-  /@commitlint/config-conventional@17.4.4:
+  /@commitlint/config-conventional@17.7.0:
     resolution:
       {
-        integrity: sha512-u6ztvxqzi6NuhrcEDR7a+z0yrh11elY66nRrQIpqsqW6sZmpxYkDLtpRH8jRML+mmxYQ8s4qqF06Q/IQx5aJeQ==,
+        integrity: sha512-iicqh2o6et+9kWaqsQiEYZzfLbtoWv9uZl8kbI8EGfnc0HeGafQBF7AJ0ylN9D/2kj6txltsdyQs8+2fTMwWEw==,
       }
     engines: { node: ">=v14" }
     dependencies:
-      conventional-changelog-conventionalcommits: 5.0.0
+      conventional-changelog-conventionalcommits: 6.1.0
     dev: false
 
   /@commitlint/config-validator@17.6.7:
@@ -1060,7 +1083,7 @@ packages:
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.1(@types/node@20.5.6)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.7)(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - "@swc/core"
@@ -3852,7 +3875,7 @@ packages:
         integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==,
       }
 
-  /@turbo/gen@1.10.13(@types/node@20.5.6)(typescript@5.2.2):
+  /@turbo/gen@1.10.13(@types/node@20.5.7)(typescript@5.2.2):
     resolution:
       {
         integrity: sha512-fwGVjeun2i0RIdq/20d2wpatPw9vE4Mbk60uB8rk8NENDXn2JLfbsh00mZ5KAEX5ZQUibh6tD+B7xROV8Eb7dQ==,
@@ -3867,7 +3890,7 @@ packages:
       minimatch: 9.0.3
       node-plop: 0.26.3
       proxy-agent: 6.3.0
-      ts-node: 10.9.1(@types/node@20.5.6)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.7)(typescript@5.2.2)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -4203,6 +4226,12 @@ packages:
     resolution:
       {
         integrity: sha512-Gi5wRGPbbyOTX+4Y2iULQ27oUPrefaB0PxGQJnfyWN3kvEDGM3mIB5M/gQLmitZf7A9FmLeaqxD3L1CXpm3VKQ==,
+      }
+
+  /@types/node@20.5.7:
+    resolution:
+      {
+        integrity: sha512-dP7f3LdZIysZnmvP3ANJYTSwg+wLLl8p7RqniVlV7j+oXSXAbt9h0WIBFmJy5inWZoX9wZN6eXx+YXd9Rh3RBA==,
       }
 
   /@types/normalize-package-data@2.4.1:
@@ -5865,16 +5894,14 @@ packages:
       compare-func: 2.0.0
     dev: false
 
-  /conventional-changelog-conventionalcommits@5.0.0:
+  /conventional-changelog-conventionalcommits@6.1.0:
     resolution:
       {
-        integrity: sha512-lCDbA+ZqVFQGUj7h9QBKoIpLhl8iihkO0nCTyRNzuXtcd7ubODpYB04IFy31JloiJgG0Uovu8ot8oxRzn7Nwtw==,
+        integrity: sha512-3cS3GEtR78zTfMzk0AizXKKIdN4OvSh7ibNz6/DPbhWWQu7LqE/8+/GqSodV+sywUR2gpJAdP/1JFf4XtN7Zpw==,
       }
-    engines: { node: ">=10" }
+    engines: { node: ">=14" }
     dependencies:
       compare-func: 2.0.0
-      lodash: 4.17.21
-      q: 1.5.1
     dev: false
 
   /conventional-commit-types@3.0.0:
@@ -5958,7 +5985,7 @@ packages:
     dependencies:
       "@types/node": 20.4.7
       cosmiconfig: 8.2.0
-      ts-node: 10.9.1(@types/node@20.5.6)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.7)(typescript@5.2.2)
       typescript: 5.2.2
     dev: false
 
@@ -9818,7 +9845,7 @@ packages:
       }
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.1
+      resolve: 1.22.4
       semver: 5.7.2
       validate-npm-package-license: 3.0.4
 
@@ -10288,7 +10315,7 @@ packages:
       }
     engines: { node: ">=8" }
     dependencies:
-      "@babel/code-frame": 7.22.10
+      "@babel/code-frame": 7.22.13
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -10481,7 +10508,7 @@ packages:
     dependencies:
       lilconfig: 2.1.0
       postcss: 8.4.28
-      ts-node: 10.9.1(@types/node@20.5.6)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.7)(typescript@5.2.2)
       yaml: 2.3.1
 
   /postcss-nested@6.0.1(postcss@8.4.28):
@@ -10753,11 +10780,6 @@ packages:
         integrity: sha512-pMpnA0qRdFp32b1sJl1wOJNxZLQ2cbQx+k6tjNtZ8CpvVhNqEPRgivZ2WOUev2YMajecdH7ctUPDvEe87nariQ==,
       }
     engines: { node: ">=6.0.0" }
-    dev: false
-
-  /q@1.5.1:
-    resolution: { integrity: sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc= }
-    engines: { node: ">=0.6.0", teleport: ">=0.2.0" }
     dev: false
 
   /qs@6.11.2:
@@ -12377,7 +12399,7 @@ packages:
       "@ts-morph/common": 0.17.0
       code-block-writer: 11.0.3
 
-  /ts-node@10.9.1(@types/node@20.5.6)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@20.5.7)(typescript@5.2.2):
     resolution:
       {
         integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==,
@@ -12399,7 +12421,7 @@ packages:
       "@tsconfig/node12": 1.0.11
       "@tsconfig/node14": 1.0.3
       "@tsconfig/node16": 1.0.4
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
