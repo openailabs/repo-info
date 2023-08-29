@@ -48,6 +48,8 @@ jobs:
 
       - run: cp pnpm-workspace.yaml.tplt pnpm-workspace.yaml
 
+      - run: cp pnpm-lock.yaml.tplt pnpm-lock.yaml
+
       - name: Install deps (with cache)
         run: pnpm install
 
