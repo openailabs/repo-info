@@ -1,0 +1,71 @@
+{
+  "name": "@acme/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm with-env next build",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "pnpm with-env next dev --port 2000",
+    "start": "pnpm with-env next start",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env.local --"
+  },
+  "dependencies": {
+    "@acme/api": "^0.1.0",
+    "@acme/db": "^0.1.0",
+    "@acme/ui": "^0.1.0",
+    "@clerk/nextjs": "^4.23.2",
+    "@dinero.js/currencies": "2.0.0-alpha.14",
+    "@hookform/resolvers": "^3.3.0",
+    "@next/mdx": "13.4.19",
+    "@t3-oss/env-nextjs": "^0.6.1",
+    "@tanstack/react-query": "^5.0.0-beta.16",
+    "@tanstack/react-table": "^8.9.3",
+    "@trpc/client": "^10.38.0",
+    "@trpc/next": "^10.38.0",
+    "@trpc/react-query": "^10.38.0",
+    "@trpc/server": "^10.38.0",
+    "@vercel/analytics": "^1.0.2",
+    "date-fns": "^2.30.0",
+    "dinero.js": "2.0.0-alpha.14",
+    "framer-motion": "^10.16.1",
+    "lru-cache": "^10.0.1",
+    "next": "13.4.19",
+    "next-i18next": "^14.0.0",
+    "next-intl": "^2.20.0",
+    "next-themes": "^0.2.1",
+    "react": "18.2.0",
+    "react-day-picker": "^8.8.1",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.4",
+    "react-image-crop": "^10.1.5",
+    "react-wrap-balancer": "^1.1.0",
+    "recharts": "^2.8.0",
+    "superjson": "1.13.1",
+    "tailwindcss-animate": "^1.0.6",
+    "zod": "^3.22.1"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tailwind-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
+    "@types/mdx": "^2.0.7",
+    "@types/node": "^20.5.6",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.15",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.48.0",
+    "prettier": "^3.0.2",
+    "tailwindcss": "3.3.3",
+    "typescript": "^5.2.2"
+  },
+  "prettier": "@acme/prettier-config",
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/nextjs"
+    ]
+  }
+}
