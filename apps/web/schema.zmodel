@@ -1,0 +1,12 @@
+import './zenstack/base.zmodel'
+import './zenstack/plugins.zmodel'
+
+import './zenstack/acme'
+import './zenstack/mark'
+
+datasource db {
+    provider     = "postgresql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+

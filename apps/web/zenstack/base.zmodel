@@ -1,0 +1,13 @@
+abstract model Identifiable {
+  id        String    @id() @default(cuid())
+}
+
+abstract model Auditable extends Identifiable{
+  createdAt DateTime?  @map(name: "created_at") @default(now()) 
+  createdBy String? @map(name: "created_by")
+  updatedAt DateTime?  @map(name: "updated_at") @updatedAt()
+  updatedBy String? @map(name: "updated_by")
+  // deletedAt DateTime? @map(name: "deleted_at")
+  // deletedBy String? @map(name: "deleted_by")
+  // @@deny('read', deletedAt != null)
+}
