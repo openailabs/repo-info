@@ -48,4 +48,4 @@ yarn-error.log*
 .turbo
 
 /pnpm-workspace.yaml
-prisma/schema.prisma
+schema.prisma
