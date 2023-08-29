@@ -49,3 +49,4 @@ yarn-error.log*
 
 /pnpm-workspace.yaml
 schema.prisma
+pnpm-lock.yaml
