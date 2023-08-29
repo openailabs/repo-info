@@ -1,8 +1,8 @@
-import './include/base'
-import './include/plugins'
+import './zenstack/base.zmodel'
+import './zenstack/plugins.zmodel'
 
-import "./include/acme"
-import "./include/mark"
+import './zenstack/acme'
+import './zenstack/mark'
 
 datasource db {
     provider     = "postgresql"
