@@ -44,11 +44,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - run: cp .env.example .env.local
+
+      - run: cp pnpm-workspace.yaml.tplt pnpm-workspace.yaml
+
       - name: Install deps (with cache)
         run: pnpm install
-
-      - run: cp .env.example .env.local
-      - run: cp pnpm-workspace.yaml.tplt pnpm-workspace.yaml
 
       - name: Build, lint and type-check
         # run: pnpm turbo build lint typecheck format
