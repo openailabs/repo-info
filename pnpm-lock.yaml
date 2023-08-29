@@ -91,6 +91,15 @@ importers:
       "@vercel/analytics":
         specifier: ^1.0.2
         version: 1.0.2
+      "@zenstackhq/runtime":
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
+      "@zenstackhq/server":
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
+      "@zenstackhq/tanstack-query":
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
@@ -105,7 +114,7 @@ importers:
         version: 10.0.1
       next:
         specifier: 13.4.19
-        version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+        version: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       next-i18next:
         specifier: ^14.0.0
         version: 14.0.0(i18next@23.4.6)(next@13.4.19)(react-i18next@13.2.0)(react@18.2.0)
@@ -170,6 +179,12 @@ importers:
       "@types/react-dom":
         specifier: ^18.2.7
         version: 18.2.7
+      "@zenstackhq/swr":
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
+      "@zenstackhq/trpc":
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
       autoprefixer:
         specifier: ^10.4.15
         version: 10.4.15(postcss@8.4.28)
@@ -188,6 +203,9 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+      zenstack:
+        specifier: ^1.0.0-beta.20
+        version: 1.0.0-beta.20
 
   packages/api:
     dependencies:
@@ -255,15 +273,6 @@ importers:
       "@prisma/client":
         specifier: 5.2.0
         version: 5.2.0(prisma@5.2.0)
-      "@zenstackhq/runtime":
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
-      "@zenstackhq/server":
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
-      "@zenstackhq/tanstack-query":
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
@@ -277,12 +286,6 @@ importers:
       "@acme/tsconfig":
         specifier: 0.1.0
         version: link:../../tooling/typescript
-      "@zenstackhq/swr":
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
-      "@zenstackhq/trpc":
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.3.0
@@ -295,9 +298,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-      zenstack:
-        specifier: ^1.0.0-beta.20
-        version: 1.0.0-beta.20
 
   packages/ui:
     dependencies:
@@ -559,6 +559,7 @@ packages:
         integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==,
       }
     engines: { node: ">=6.9.0" }
+    requiresBuild: true
     dependencies:
       "@babel/highlight": 7.22.13
       chalk: 2.4.2
@@ -755,6 +756,7 @@ packages:
         integrity: sha512-C/BaXcnnvBCmHTpz/VGZ8jgtE2aYlW4hxDhseJAWZb7gqGM/qtCK6iZUb0TyKFf7BOUsBH7Q7fkRsDRhg1XklQ==,
       }
     engines: { node: ">=6.9.0" }
+    requiresBuild: true
     dependencies:
       "@babel/helper-validator-identifier": 7.22.5
       chalk: 2.4.2
@@ -931,7 +933,7 @@ packages:
       "@clerk/clerk-react": 4.23.2(react@18.2.0)
       "@clerk/clerk-sdk-node": 4.12.2
       "@clerk/types": 3.49.0
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       path-to-regexp: 6.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1001,6 +1003,7 @@ packages:
         integrity: sha512-vJSncmnzwMvpr3lIcm0I8YVVDJTzyjy7NZAeXbTXy+MPUdAr9pKyyg7Tx/ebOQ9kqzE6O9WT6jg2164br5UdsQ==,
       }
     engines: { node: ">=v14" }
+    requiresBuild: true
     dependencies:
       "@commitlint/types": 17.4.4
       ajv: 8.12.0
@@ -1027,6 +1030,7 @@ packages:
         integrity: sha512-LIgYXuCSO5Gvtc0t9bebAMSwd68ewzmqLypqI2Kke1rqOqqDbMpYcYfoPfFlv9eyLIh4jocHWwCK5FS7z9icUA==,
       }
     engines: { node: ">=v14" }
+    requiresBuild: true
     dev: false
 
   /@commitlint/format@17.4.4:
@@ -1130,6 +1134,7 @@ packages:
         integrity: sha512-PfeoAwLHtbOaC9bGn/FADN156CqkFz6ZKiVDMjuC2N5N0740Ke56rKU7Wxdwya8R8xzLK9vZzHgNbuGhaOVKIg==,
       }
     engines: { node: ">=v14" }
+    requiresBuild: true
     dependencies:
       "@commitlint/config-validator": 17.6.7
       "@commitlint/types": 17.4.4
@@ -2105,7 +2110,7 @@ packages:
     dependencies:
       asn1js: 3.0.5
       pvtsutils: 1.3.5
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: false
 
   /@peculiar/json-schema@1.1.12:
@@ -2115,7 +2120,7 @@ packages:
       }
     engines: { node: ">=8.0.0" }
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: false
 
   /@peculiar/webcrypto@1.4.1:
@@ -2128,7 +2133,7 @@ packages:
       "@peculiar/asn1-schema": 2.3.6
       "@peculiar/json-schema": 1.1.12
       pvtsutils: 1.3.5
-      tslib: 2.4.1
+      tslib: 2.6.2
       webcrypto-core: 1.7.7
     dev: false
 
@@ -3808,7 +3813,7 @@ packages:
       "@trpc/client": 10.38.0(@trpc/server@10.38.0)
       "@trpc/react-query": 10.38.0(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.38.0)(@trpc/server@10.38.0)(react-dom@18.2.0)(react@18.2.0)
       "@trpc/server": 10.38.0
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-ssr-prepass: 1.5.0(react@18.2.0)
@@ -3935,7 +3940,7 @@ packages:
       }
     dependencies:
       "@types/connect": 3.4.35
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/connect@3.4.35:
@@ -3944,7 +3949,7 @@ packages:
         integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/cookies@0.7.7:
@@ -3956,7 +3961,7 @@ packages:
       "@types/connect": 3.4.35
       "@types/express": 4.17.14
       "@types/keygrip": 1.0.2
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/cross-spawn@6.0.2:
@@ -3965,12 +3970,12 @@ packages:
         integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
 
-  /@types/d3-array@3.0.6:
+  /@types/d3-array@3.0.7:
     resolution:
       {
-        integrity: sha512-NHkizg870sKYQn45oZT5ItoHqcgRgJD7KAiWZp4Udc6YdrFH2W0tZ2vv4shRHP+SXHoJ1G8B4I1GWb5oQSGypA==,
+        integrity: sha512-4/Q0FckQ8TBjsB0VdGFemJOG8BLXUB2KKlL0VmZ+eOYeOnTb/wDRQqYWpBmQ6IlvWkXwkYiot+n9Px2aTJ7zGQ==,
       }
     dev: false
 
@@ -4075,7 +4080,7 @@ packages:
         integrity: sha512-zbivROJ0ZqLAtMzgzIUC4oNqDG9iF0lSsAqpOD9kbs5xcIM3dTiyuHvBc7R8MtWBp3AAWGaovJa+wzWPjLYW7Q==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
       "@types/qs": 6.9.7
       "@types/range-parser": 1.2.4
       "@types/send": 0.17.1
@@ -4100,7 +4105,7 @@ packages:
       }
     dependencies:
       "@types/minimatch": 5.1.2
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/hoist-non-react-statics@3.3.1:
@@ -4154,7 +4159,7 @@ packages:
         integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/mdx@2.0.7:
@@ -4204,7 +4209,7 @@ packages:
         integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
       form-data: 3.0.1
     dev: false
 
@@ -4220,6 +4225,7 @@ packages:
       {
         integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==,
       }
+    requiresBuild: true
     dev: false
 
   /@types/node@20.5.6:
@@ -4227,6 +4233,7 @@ packages:
       {
         integrity: sha512-Gi5wRGPbbyOTX+4Y2iULQ27oUPrefaB0PxGQJnfyWN3kvEDGM3mIB5M/gQLmitZf7A9FmLeaqxD3L1CXpm3VKQ==,
       }
+    dev: true
 
   /@types/node@20.5.7:
     resolution:
@@ -4284,7 +4291,7 @@ packages:
         integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/retry@0.12.0:
@@ -4320,7 +4327,7 @@ packages:
       }
     dependencies:
       "@types/mime": 1.3.2
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/serve-static@1.15.2:
@@ -4331,7 +4338,7 @@ packages:
     dependencies:
       "@types/http-errors": 2.0.1
       "@types/mime": 3.0.1
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/through@0.0.30:
@@ -4340,7 +4347,7 @@ packages:
         integrity: sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==,
       }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
     dev: false
 
   /@types/tinycolor2@1.4.3:
@@ -4784,6 +4791,7 @@ packages:
       {
         integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==,
       }
+    requiresBuild: true
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -5060,7 +5068,7 @@ packages:
     dependencies:
       pvtsutils: 1.3.5
       pvutils: 1.1.3
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: false
 
   /ast-types-flow@0.0.7:
@@ -5977,6 +5985,7 @@ packages:
         integrity: sha512-BabizFdC3wBHhbI4kJh0VkQP9GkBfoHPydD0COMce1nJ1kJAB3F2TmJ/I7diULBKtmEWSwEbuN/KDtgnmUUVmw==,
       }
     engines: { node: ">=v14.21.3" }
+    requiresBuild: true
     peerDependencies:
       "@types/node": "*"
       cosmiconfig: ">=7"
@@ -5995,6 +6004,7 @@ packages:
         integrity: sha512-3rTMnFJA1tCOPwRxtgF4wd7Ab2qvDbL8jX+3smjIbS4HlZBagTlpERbdN7iAbWlrfxE3M8c27kTwTawQ7st+OQ==,
       }
     engines: { node: ">=14" }
+    requiresBuild: true
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
@@ -6628,6 +6638,7 @@ packages:
       {
         integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==,
       }
+    requiresBuild: true
     dependencies:
       is-arrayish: 0.2.1
 
@@ -8406,6 +8417,7 @@ packages:
 
   /is-arrayish@0.2.1:
     resolution: { integrity: sha1-d8mYQFJ6qOyxqLppe4BkWnqSap0= }
+    requiresBuild: true
 
   /is-async-function@2.0.0:
     resolution:
@@ -8875,6 +8887,7 @@ packages:
       {
         integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==,
       }
+    requiresBuild: true
 
   /json-schema-traverse@0.4.1:
     resolution:
@@ -8887,6 +8900,7 @@ packages:
       {
         integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==,
       }
+    requiresBuild: true
     dev: false
 
   /json-stable-stringify-without-jsonify@1.0.1:
@@ -9129,6 +9143,7 @@ packages:
 
   /lodash.isplainobject@4.0.6:
     resolution: { integrity: sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs= }
+    requiresBuild: true
 
   /lodash.kebabcase@4.1.1:
     resolution: { integrity: sha1-hImxyw0p/4gZXM7KRI/21swpXDY= }
@@ -9149,6 +9164,7 @@ packages:
       {
         integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==,
       }
+    requiresBuild: true
     dev: false
 
   /lodash.snakecase@4.1.1:
@@ -9164,6 +9180,7 @@ packages:
 
   /lodash.uniq@4.5.0:
     resolution: { integrity: sha1-0CJTc662Uq3BvILklFM5qEJ1R3M= }
+    requiresBuild: true
     dev: false
 
   /lodash.upperfirst@4.3.1:
@@ -9643,7 +9660,7 @@ packages:
       hoist-non-react-statics: 3.3.2
       i18next: 23.4.6
       i18next-fs-backend: 2.1.5
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-i18next: 13.2.0(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0)
     dev: false
@@ -9660,7 +9677,7 @@ packages:
     dependencies:
       "@formatjs/intl-localematcher": 0.2.32
       negotiator: 0.6.3
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       use-intl: 2.20.0(react@18.2.0)
     dev: false
@@ -9675,12 +9692,12 @@ packages:
       react: "*"
       react-dom: "*"
     dependencies:
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /next@13.4.19(react-dom@18.2.0)(react@18.2.0):
+  /next@13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0):
     resolution:
       {
         integrity: sha512-HuPSzzAbJ1T4BD8e0bs6B9C1kWQ6gv8ykZoRWs5AQoiIuqbGHHdQO7Ljuvg05Q0Z24E2ABozHe6FxDvI6HfyAw==,
@@ -9699,6 +9716,7 @@ packages:
         optional: true
     dependencies:
       "@next/env": 13.4.19
+      "@opentelemetry/api": 1.4.1
       "@swc/helpers": 0.5.1
       busboy: 1.6.0
       caniuse-lite: 1.0.30001523
@@ -11305,6 +11323,7 @@ packages:
         integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==,
       }
     engines: { node: ">=0.10.0" }
+    requiresBuild: true
     dev: false
 
   /resolve-dir@1.0.1:
@@ -12005,7 +12024,7 @@ packages:
       }
     engines: { node: ">=12.*" }
     dependencies:
-      "@types/node": 20.5.6
+      "@types/node": 20.5.7
       qs: 6.11.2
     dev: false
 
@@ -12947,7 +12966,7 @@ packages:
         integrity: sha512-nT8kCiJp8dQh8g991J/R5w5eE2KnO8EAIP0xocWlh9l2okngMWglOPoMZzJvek8Q1KUc4XE/mJxTZnvOB1sTYg==,
       }
     dependencies:
-      "@types/d3-array": 3.0.6
+      "@types/d3-array": 3.0.7
       "@types/d3-ease": 3.0.0
       "@types/d3-interpolate": 3.0.1
       "@types/d3-scale": 4.0.4
@@ -13084,7 +13103,7 @@ packages:
       "@peculiar/json-schema": 1.1.12
       asn1js: 3.0.5
       pvtsutils: 1.3.5
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: false
 
   /webidl-conversions@3.0.1:
